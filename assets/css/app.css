@@ -1,3 +1,12 @@
+/* Color themes */
+
+:root {
+    --spotify: #1CB955;
+    --spotify-visited: .5;
+    /* opacity */
+}
+
+
 /* Styling classes */
 
 .clickable {
@@ -34,6 +43,16 @@
 .results-list img {
     width: 100%;
     height: auto;
+}
+
+.results-spotify .fa,
+.results-spotify a,
+.results-spotify a:hover {
+    color: var(--spotify);
+}
+
+.results-spotify a:visited {
+    opacity: var(--spotify-visited);
 }
 
 .notes {
