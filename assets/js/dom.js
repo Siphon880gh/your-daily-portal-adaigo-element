@@ -36,4 +36,6 @@ function domRendersArtists(artistName, artists) {
         return liEl;
     });
     artistsContainer.append(...artistEls); // TO REVIEW: Similar to .append(liEl0, liEl1, etc)
+
+    $(artistsContainer).sortable();
 }
