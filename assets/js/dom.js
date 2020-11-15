@@ -14,10 +14,10 @@ function userInputsArtist() {
 
 function domRendersArtists(artistName, artists) {
     // Let user know which artist we are querying related artists for
-    const artistTitle = document.querySelector(".results-container .results-title");
-    const artitleTitleTextEl = document.createElement("h2");
-    artitleTitleTextEl.textContent = artistName;
-    artistTitle.append(artitleTitleTextEl);
+    const artistTitleContainer = document.querySelector(".results-container .results-title");
+    const artistTitleTextEl = document.createElement("h2");
+    artistTitleTextEl.textContent = artistName;
+    artistTitleContainer.append(artistTitleTextEl);
 
     // Clear related artists section where "Loading..." text was
     const artistsContainer = document.querySelector(".results-container .results-list");
