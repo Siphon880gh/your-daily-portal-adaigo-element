@@ -39,7 +39,14 @@
 <body>
     <main class="container">
         <h1>Get related artists</h1>
-        <p class="clickable">Enter artist name for related artist information. Artist name can be entered in URL as index.html#{artist-name}. For example: <code onclick="location.assign('index.html#Bebe Rexha'); location.reload();">index.html#Bebe Rexha</code></p>
+        <p class="clickable">
+            Enter artist name for related artist information. Artist name can be entered in URL as index.html#{artist-name}. For example: <code onclick="location.href = '#Bebe Rexha'; 
+                                setTimeout(function() { 
+                                    location.reload(); 
+                                }, 100);">
+                                index.html#Bebe Rexha
+                        </code>
+        </p>
         <div class="results">
             <ul class="list-group">
                 <li class="list-group-item">
