@@ -107,7 +107,7 @@ async function clientCredentialsFlow(artistName, callback) {
 
         const relatedArtistsObject = await getRelatedArtists(bearerAccessToken, artistId);
         const relatedArtists = relatedArtistsObject.artists;
-        callback(relatedArtists);
+        callback(artistName, relatedArtists);
 
         console.log("Fetched objects:")
         console.table({

@@ -7,11 +7,21 @@
 
 /* Components */
 
-.results figcaption {
+.results-title h2::after {
+    content: " Related Artists";
+    font-weight: 200;
+}
+
+.results-title h2 {
+    text-align: center;
+    margin-bottom: 1rem;
+}
+
+.results-list figcaption {
     font-size: 1.8rem;
 }
 
-.results img {
+.results-list img {
     max-width: 100%;
     height: auto;
 }
