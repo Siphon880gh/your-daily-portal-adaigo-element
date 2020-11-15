@@ -1,0 +1,22 @@
+/* Styling classes */
+
+.clickable {
+    cursor: pointer;
+}
+
+
+/* Components */
+
+.results figcaption {
+    font-size: 1.8rem;
+}
+
+.results img {
+    max-width: 100%;
+    height: auto;
+}
+
+.notes {
+    margin-top: 1rem;
+    color: gray;
+}
