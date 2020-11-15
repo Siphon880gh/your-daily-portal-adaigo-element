@@ -64,7 +64,7 @@ async function clientCredentialsFlow(artistName, callback) {
 
     /**
      * Get related artists.
-     * API Guide on related artists search: https://developer.spotify.com/console/search/
+     * API Guide on related artists search: https://developer.spotify.com/console/get-artist-related-artists/
      * Authorization type: Bearer access token
      * Input: bearer access token, artist id
      * Output: object including related artists and their id's 
