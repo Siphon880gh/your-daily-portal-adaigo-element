@@ -26,11 +26,27 @@
     <style>
         /* Mobile-first aproach */
         
-        @media (min-width: 480px) {}
+        .results-list li {
+            width: 100%;
+        }
         
-        @media (min-width: 768px) {}
+        @media (min-width: 480px) {
+            .results-list li {
+                width: calc(100% * (6/12));
+            }
+        }
         
-        @media (min-width: 1200px) {}
+        @media (min-width: 768px) {
+            .results-list li {
+                width: calc(100% * (4/12));
+            }
+        }
+        
+        @media (min-width: 1200px) {
+            .results-list li {
+                width: calc(100% * (3/12));
+            }
+        }
     </style>
 
 </head>
@@ -65,7 +81,7 @@
             <div class="card-body">
                 
                 <figure>
-                    <figcaption>_name_</figcaption>
+                    <figcaption class="card-header">_name_</figcaption>
                     <img src="_imageUrl_" alt="artist cover picture"/>
                 </figure>
 

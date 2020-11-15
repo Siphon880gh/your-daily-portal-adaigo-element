@@ -17,12 +17,22 @@
     margin-bottom: 1rem;
 }
 
+.results-list {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+}
+
+.results-list li {
+    display: inline-block;
+}
+
 .results-list figcaption {
     font-size: 1.8rem;
 }
 
 .results-list img {
-    max-width: 100%;
+    width: 100%;
     height: auto;
 }
 
