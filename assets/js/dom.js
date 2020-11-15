@@ -1,7 +1,12 @@
 function userInputsArtist() {
-    if (window.location.hash.length) {
+    if (window.location.hash.length > 1) {
+        // Prepare artist name from the URL hash
         var artist = window.location.hash;
-        clientCredentialsFlow("Bebe Rexha", domRendersArtists); // Parameters: artist, callback 
+        artist = decodeURI(artist);
+        artist = artist.substr(1); // drop the "#" beginning of string
+
+        // Start auth flow
+        clientCredentialsFlow(artist, domRendersArtists); // Parameters: artist, callback 
     } else {
         throw ("Error: Your URL must end with #{artist-name}. Example is\nindex.html#Bebe Rexha");
     }
