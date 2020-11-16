@@ -23,6 +23,9 @@ function domRendersArtists(artistName, artists) {
     const artistsContainer = document.querySelector(".results-container .results-list");
     artistsContainer.textContent = "";
 
+    // Map takes an array and changes its elements to a different arrayl
+    // For example: [1,2,3] => [2,4,6] if the map function takes each element and return el*2
+    // Guide: https://www.w3schools.com/jsref/jsref_map.asp
     var artistEls = artists.map((artist) => {
         var { name, id } = artist;
         var href = artist.external_urls.spotify;
@@ -40,6 +43,11 @@ function domRendersArtists(artistName, artists) {
 
         return liEl;
     });
+
+    // Spread syntax
+    // Takes an array and spreads it out
+    // var arr = [1,2,3 
+    // doMath(...arr) => Becomes doMath(arr[0], arr[1], arr[2])
     artistsContainer.append(...artistEls); // TO REVIEW: Similar to .append(liEl0, liEl1, etc)
 
     $(artistsContainer).sortable();
