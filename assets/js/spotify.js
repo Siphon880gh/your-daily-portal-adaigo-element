@@ -5,7 +5,7 @@
  * @function clientCredentialsFlow
  * 
  */
-async function clientCredentialsFlow(artistName, callback) {
+async function spotifyClientCredentialsFlow(artistName, callback) {
 
     /**
      * Get the access token for your Spotify App

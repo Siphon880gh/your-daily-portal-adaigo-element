@@ -6,7 +6,29 @@ function userInputsArtist() {
         artist = artist.substr(1); // drop the "#" beginning of string
 
         // Start auth flow
-        clientCredentialsFlow(artist, domRendersArtists); // Parameters: artist, callback 
+        spotifyClientCredentialsFlow(artist, function() {
+            // Mock array
+            artistsArray = [{
+                    name: "Some artist 1",
+                    external_urls: {
+                        spotify: "https://www.google.com"
+                    },
+                    images: [{
+                        url: "http://via.placeholder.com/500x500?text=Mock"
+                    }]
+                },
+                {
+                    name: "Some artist 2",
+                    external_urls: {
+                        spotify: "https://www.google.com"
+                    },
+                    images: [{
+                        url: "http://via.placeholder.com/500x500?text=Mock"
+                    }]
+                }
+            ];
+            secondApiFlow(artistsArray, artist, domRendersArtists);
+        }); // Parameters: artist, callback 
     } else {
         throw ("Error: Your URL must end with #{artist-name}. Example is\nindex.html#Bebe Rexha");
     }
@@ -50,5 +72,5 @@ function domRendersArtists(artistName, artists) {
     // doMath(...arr) => Becomes doMath(arr[0], arr[1], arr[2])
     artistsContainer.append(...artistEls); // TO REVIEW: Similar to .append(liEl0, liEl1, etc)
 
-    $(artistsContainer).sortable();
+    // $(artistsContainer).sortable(); // making it drag and drop
 }
