@@ -66,11 +66,14 @@ function initModals() {
     let horoscopeModalEl = document.querySelector("#modal-horoscope");
     modals.horoscope = M.Modal.init(horoscopeModalEl);
 
-    // Init datepicker ui
-    $("#datepicker").datepicker({
-        autoSize: true,
-        yearRange: "-100:+0"
+    let minYear = 1940;
+    let currentYear = parseInt(moment().format("YYYY"));
+    var instances = M.Datepicker.init(document.querySelector("#datepicker"), {
+        changeMonth: true,
+        changeYear: true,
+        yearRange: [minYear, currentYear]
     });
+
 
     // - Message Modal for errors etc -
     let messageModalEl = document.querySelector("#modal-message");
