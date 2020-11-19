@@ -1,26 +1,3 @@
-async function userInputsArtist() {
-    return;
-    if (window.location.hash.length > 1) {
-        // Prepare artist name from the URL hash
-        var artistName = window.location.hash;
-        artistName = decodeURI(artistName);
-        artistName = artistName.substr(1); // drop the "#" beginning of string
-
-        // Start auth flow
-        var { artistName, relatedArtists } = await spotifyClientCredentialsFlow({ artistName }); // Parameters: artist, callback 
-        var someValue = await secondAPI({ searchTerm: artistName });
-
-        var astrologyResponse = await astrologyAPI({ mm: "02", dd: "06" });
-        var { sign, prediction } = astrologyResponse;
-
-        // console.log("artist" + artistName);
-        // console.log("artists" + relatedArtists);
-        domRendersArtists(artistName, relatedArtists);
-    } else {
-        throw ("Error: Your URL must end with #{artist-name}. Example is\nindex.html#Bebe Rexha");
-    }
-}
-
 function domRendersArtists(artistName, relatedArtists) {
     // Let user know which artist we are querying related artists for
     const artistTitleContainer = document.querySelector(".results-container .results-title");
