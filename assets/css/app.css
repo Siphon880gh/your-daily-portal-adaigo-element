@@ -20,6 +20,12 @@
     padding: .25rem;
 }
 
+.sticky {
+    position: sticky;
+    bottom: 0;
+    left: 0
+}
+
 
 /* Reuseable Components */
 
@@ -30,6 +36,10 @@
 
 .x:hover {
     color: var(--link-hover);
+}
+
+h3 {
+    font-size: 1.78rem !important;
 }
 
 
@@ -55,8 +65,18 @@
     display: inline-block;
 }
 
-.results-list figcaption {
-    font-size: 1.8rem;
+.results-list li.active {
+    border: 1px solid green;
+    background-color: lightgreen;
+}
+
+.results-list li.active .card-content {
+    background-color: lightgreen;
+    color: black;
+}
+
+#results-title-text {
+    font-size: 1.5rem !important;
 }
 
 .results-list img {

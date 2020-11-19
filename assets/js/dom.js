@@ -1,4 +1,5 @@
 async function userInputsArtist() {
+    return;
     if (window.location.hash.length > 1) {
         // Prepare artist name from the URL hash
         var artistName = window.location.hash;
@@ -22,6 +23,7 @@ function domRendersArtists(artistName, relatedArtists) {
     // Let user know which artist we are querying related artists for
     const artistTitleContainer = document.querySelector(".results-container .results-title");
     const artistTitleTextEl = document.createElement("h2");
+    artistTitleTextEl.id = "results-title-text";
     artistTitleTextEl.textContent = artistName;
     artistTitleContainer.append(artistTitleTextEl);
 
@@ -40,12 +42,15 @@ function domRendersArtists(artistName, relatedArtists) {
         var template = document.querySelector(".template-artist-card").innerHTML;
         template = template
             .replace("_name_", name)
-            .replace("_id_", name)
+            .replace("_id_", id)
             .replace("_href_", href)
             .replace("_imageUrl_", imageUrl)
         var liEl = document.createElement("li");
         liEl.classList = "collection-item";
         liEl.innerHTML = template;
+        liEl.addEventListener("click", function(event) {
+            $(this).toggleClass("active");
+        });
 
         return liEl;
     });
@@ -62,7 +67,8 @@ function domRendersArtists(artistName, relatedArtists) {
 // Materialize modal instances
 let modals = {
     "artist": null,
-    "horoscope": null
+    "horoscope": null,
+    "error": null
 }
 
 function initModals() {
@@ -75,12 +81,22 @@ function initModals() {
     // - Horoscope Modal for setting birthday -
     let horoscopeModalEl = document.querySelector("#modal-horoscope");
     modals.horoscope = M.Modal.init(horoscopeModalEl);
+
     // Init datepicker ui
     $("#datepicker").datepicker({
         autoSize: true
     });
 
-    (function testHoroscope() {
-        modals.horoscope.open();
+    // - Message Modal for errors etc -
+    let errorModalEl = document.querySelector("#modal-error");
+    modals.error = M.Modal.init(errorModalEl);
+
+
+    // (function testHoroscope() {
+    //     modals.horoscope.open();
+    // })();
+
+    (function testMusic() {
+        modals.artist.open();
     })();
 }
