@@ -105,7 +105,7 @@ function initModals() {
     //     modals.artist.open();
     // })();
 
-    (function testYourName() {
-        modals.yourName.open();
-    })();
+    // (function testYourName() {
+    //     modals.yourName.open();
+    // })();
 }
