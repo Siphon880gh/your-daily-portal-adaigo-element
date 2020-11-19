@@ -1,6 +1,6 @@
 let dbPrefix = "dailyDashboard_";
 
-function saveYourName(yourName) {
+function saveDisplayName(yourName) {
     if (yourName.length === 0) {
         message("Error", "red", "Enter a display name you want to be greeted with.");
         return;
@@ -8,6 +8,7 @@ function saveYourName(yourName) {
     console.log(yourName);
 
     localStorage.setItem(dbPrefix + "displayName", yourName);
+    render("displayName");
     modals.yourName.close();
 }
 
@@ -60,3 +61,24 @@ async function saveArtistPg2(p2) {
 function getZodiacImagePath(sign) {
     return `assets/img/zodiac-constellations/${sign}.png`;
 }
+
+(function detectIfFirstUse() {
+
+})
+
+function render(section) {
+    switch (section) {
+        case "displayName":
+            let displayName = localStorage.getItem(dbPrefix + "displayName");
+            if (displayName) {
+                $("#front-username").text(`Greetings ${displayName},`);
+            }
+            break;
+    }
+}
+
+setInterval(() => {
+    if ($("#front-username").html().length === 0) {
+        render("displayName");
+    }
+}, 20);
