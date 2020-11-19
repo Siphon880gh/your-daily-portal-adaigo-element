@@ -89,7 +89,7 @@ async function saveArtistPg1(p1) {
     $(p1).addClass("hide");
     $(p1).next().removeClass("hide");
     var artistName = $("#artist").val();
-    var { artistName, relatedArtists } = await spotifyClientCredentialsFlow({ artistName }); // Parameters: artist, callback 
+    var { artistName, relatedArtists } = await spotifyClientCredentialsFlow_relatedArtists({ artistName }); // Parameters: artist, callback 
     domRendersArtists(artistName, relatedArtists);
 }
 
@@ -143,6 +143,38 @@ async function render(section) {
                 horoscopeEl.append(div);
             }
             break;
+        case "playlist":
+            let relatedArtists = localStorage.getItem(dbPrefix + "relatedArtists");
+            if (relatedArtists) {
+                relatedArtists = JSON.parse(relatedArtists);
+                // let songs = await spotifyClientCredentialsFlow_playlist({relatedArtists});
+                let playlistEl = document.querySelector("#front-playlist");
+                let div1 = document.createElement("div"); // div has text content from CSS
+                playlistEl.appendChild(div1);
+
+                // Create the two side by side list of songs
+                let songs = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17]; // Mock data
+                songs = songs.map(iel => {
+                    let div = document.createElement("div");
+                    div.textContent = iel;
+                    return div;
+                });
+                var songsLeft = songs.slice(0, 15);
+                var songsRight = songs.slice(15);
+
+                let splitPlaylistLeft = document.createElement("div");
+                splitPlaylistLeft.className = "playlist-column";
+                let splitPlaylistRight = document.createElement("div");
+                splitPlaylistRight.className = "playlist-column";
+
+                splitPlaylistLeft.append(...songsLeft);
+                splitPlaylistRight.append(...songsRight);
+
+                let div = document.createElement("div");
+                div.append(splitPlaylistLeft, splitPlaylistRight);
+                playlistEl.append(div);
+            }
+            break;
     } // switch
 
     $(".collection").sortable();
@@ -154,5 +186,8 @@ setInterval(() => {
     }
     if ($("#front-horoscope").html().length === 0) {
         render("horoscope");
+    }
+    if ($("#front-playlist").html().length === 0) {
+        render("playlist");
     }
 }, 20);

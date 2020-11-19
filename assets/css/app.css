@@ -86,7 +86,7 @@ h3 {
     display: none !important;
 }
 
-#front-playlist>p::after {
+#front-playlist>div:first-child::after {
     text-align: center;
     content: "Here are some songs just for you and your day";
     flex-basis: 100%;
@@ -98,6 +98,7 @@ h3 {
     flex-direction: row;
     justify-content: space-between;
     flex-wrap: wrap;
+    margin-bottom: 10px;
 }
 
 #front-playlist>div>.playlist-column {
@@ -163,7 +164,9 @@ h3 {
     opacity: var(--spotify-visited) !important;
 }
 
-.notes {
-    margin-top: 1rem;
-    color: gray;
+.playlist-column {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    justify-content: flex-start;
 }
