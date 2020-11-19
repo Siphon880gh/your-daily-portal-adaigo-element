@@ -56,24 +56,15 @@
 
 <body>
     <!-- TODO: Refactor HTML and Javascript -->
-
     <main class="container">
+
         <h1>Daily Dashboard</h1>
-        <h2>_username_line_</h2>
+        <h2 id="front-username"></h2>
         <div class="collection" style="display:flex; flex-direction:column; flex-wrap:wrap; justify-content:space-around; border:none; gap:10px;">
 
-            <div class="collection-item" data-style-off="height: 25vh; width: 25vh;" style="border:1px solid gray; flex-basis:100%; display:flex; flex-direction:column; justify-content:space-between; flex-wrap:wrap; text-align:center;">
-                <img src="" alt="Horoscope sign" style="text-align:center; width:100px; height:100px; margin: 10px auto;">
-                <div>_horoscope_prediction_</div>
-            </div>
+            <div id="front-horoscope" class="collection-item" style="border:1px solid gray; flex-basis:100%; display:flex; flex-direction:column; justify-content:space-between; flex-wrap:wrap; text-align:center;" data-will-append="img>p"></div>
 
-            <div class="collection-item" data-style-off="height: 25vh; width: 25vh;" style="border:1px solid gray; flex-basis:100%; flex-basis:100%; display:flex; flex-direction:column; justify-content:space-between; flex-wrap:wrap;">
-                <p style="flex-basis:100%; text-align:center">Here are some songs just for you and your day</p>
-                <div style="flex-basis:100%; display:flex; flex-direction:row; justify-content:space-between: flex-wrap:wrap;">
-                    <div class="playlist-column" style="flex-basis:50%;">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Velit quas ipsa ea repellendus est cum, illo corporis, quia sapiente, facilis quisquam explicabo ullam eveniet cupiditate aspernatur recusandae in et rem!</div>
-                    <div class="playlist-column" style="flex-basis:50%;">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Velit quas ipsa ea repellendus est cum, illo corporis, quia sapiente, facilis quisquam explicabo ullam eveniet cupiditate aspernatur recusandae in et rem!</div>
-                </div>
-            </div>
+            <div id="front-playlist" class="collection-item" style="border:1px solid gray; flex-basis:100%; flex-basis:100%; display:flex; flex-direction:column; justify-content:space-between; flex-wrap:wrap;" data-will-append="p div>(.playlist-column*2)"></div>
 
             <div class="collection-item" style="border:none; transition: border 200ms; height:100px; display:flex; flex-direction:column; justify-content:space-around;">
                 <div class="clickable" style="display: block; width:25px; height:25px; margin:0 auto; text-align:center; font-size:2rem;" onmouseover="$(this).closest('.collection-item').css('border', '1px solid gray'); setTimeout(()=>{$(this).closest('.collection-item').css('border', 'none');}, 1000);"
