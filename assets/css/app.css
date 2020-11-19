@@ -64,7 +64,7 @@ h3 {
 }
 
 #front-username {
-    text-align: center;
+    text-align: left;
 }
 
 #front-username:empty {

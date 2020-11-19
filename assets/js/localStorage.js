@@ -73,8 +73,10 @@ async function saveHoroscope(birthdate) {
         }
     } // changeBirthdayToSign
 
-    localStorage.setItem(dbPrefix + "zodiac", sign)
+    let zodiac = changeBirthdayToSign(mm, dd);
+    localStorage.setItem(dbPrefix + "zodiac", zodiac)
 
+    render("horoscope");
     modals.horoscope.close();
 }
 
@@ -98,8 +100,6 @@ async function saveArtistPg2(p2) {
         message("Error", "red", "Please select related artists to curate your playlist.");
         return;
     }
-    modals.artist.close();
-
     let relatedArtists = [];
 
     $(p2).find(".results-list li.active").map((i, relatedArtistEl) => {
@@ -109,7 +109,9 @@ async function saveArtistPg2(p2) {
     });
 
     localStorage.setItem(dbPrefix + "relatedArtists", JSON.stringify(relatedArtists));
-}
+    render("playlist");
+    modals.artist.close();
+} // saveArtistPg2
 
 
 (function detectIfFirstUse() {

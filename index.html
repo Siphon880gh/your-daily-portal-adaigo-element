@@ -72,8 +72,8 @@
 
             <div id="front-playlist" class="collection-item" style="border:1px solid gray; flex-basis:100%; flex-basis:100%; display:flex; flex-direction:column; justify-content:space-between; flex-wrap:nowrap;" data-will-append="p div>(.playlist-column*2)"></div>
 
-            <div class="collection-item" style="border:none; transition: border 200ms; height:100px; display:flex; flex-direction:column; justify-content:space-around;">
-                <div class="clickable" style="display: block; width:25px; height:25px; margin:0 auto; text-align:center; font-size:2rem;" onmouseover="$(this).closest('.collection-item').css('border', '1px solid gray'); setTimeout(()=>{$(this).closest('.collection-item').css('border', 'none');}, 1000);"
+            <div class="collection-item" style="border:none; transition: borderColor 200ms; height:100px; display:flex; flex-direction:column; justify-content:space-around;">
+                <div class="clickable" style="display: block; width:25px; height:25px; margin:0 auto; text-align:center; font-size:2rem;" onmouseover="$(this).closest('.collection-item').css('border', '1px solid gray'); setTimeout(()=>{$(this).closest('.collection-item').css('border-color', 'transparent');}, 1000);"
                     onclick="newSection()">+</div>
             </div>
 
