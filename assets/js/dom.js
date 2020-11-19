@@ -42,7 +42,7 @@ function domRendersArtists(artistName, relatedArtists) {
         var template = document.querySelector(".template-artist-card").innerHTML;
         template = template
             .replace("_name_", name)
-            .replace("_id_", name)
+            .replace("_id_", id)
             .replace("_href_", href)
             .replace("_imageUrl_", imageUrl)
         var liEl = document.createElement("li");
