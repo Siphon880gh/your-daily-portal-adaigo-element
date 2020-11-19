@@ -2,7 +2,7 @@ let dbPrefix = "dailyDashboard_";
 
 function saveYourName(yourName) {
     if (yourName.length === 0) {
-        errorMessage("Enter a display name you want to be greeted with.");
+        message("Error", "red", "Enter a display name you want to be greeted with.");
         return;
     }
     console.log(yourName);
@@ -13,7 +13,7 @@ function saveYourName(yourName) {
 
 function saveHoroscope(birthdate) {
     if (birthdate.length === 0) {
-        errorMessage("Select your birthday.");
+        message("Error", "red", "Select your birthday.");
         return;
     }
     const mm = moment(birthdate).format("MM");
@@ -28,7 +28,7 @@ function saveHoroscope(birthdate) {
 
 async function saveArtistPg1(p1) {
     if ($("#artist").val().length === 0) {
-        errorMessage("Enter a musician name.");
+        message("Error", "red", "Enter a musician name.");
         return;
     }
 
@@ -41,7 +41,7 @@ async function saveArtistPg1(p1) {
 
 async function saveArtistPg2(p2) {
     if ($(p2).find(".results-list li.active").length === 0) {
-        errorMessage("Please select related artists to curate your playlist.");
+        message("Error", "red", "Please select related artists to curate your playlist.");
         return;
     }
     modals.artist.close();
@@ -55,11 +55,6 @@ async function saveArtistPg2(p2) {
     });
 
     localStorage.setItem(dbPrefix + "relatedArtists", JSON.stringify(relatedArtists));
-}
-
-function errorMessage(message) {
-    $("#modal-error").find(".error").text(message);
-    modals.error.open();
 }
 
 function getZodiacImagePath(sign) {
