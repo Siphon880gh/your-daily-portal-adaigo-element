@@ -58,7 +58,11 @@ async function spotifyClientCredentialsFlow(artistName, callback) {
 
         return fetch("https://api.spotify.com/v1/search?q=artist:" + artistName + "&type=artist", requestOptions)
             .then(response => response.json())
-            .then(result => result)
+            .then(result =>{
+                console.log(result.artists.href, "Artist")
+                return result
+             
+            }) 
             .catch(error => console.log('error', error));
     } // getArtistId
 
