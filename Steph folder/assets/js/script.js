@@ -1,3 +1,8 @@
+/**
+ * @function astrologyAPI Calls Astrology API. Then gets daily horoscope based on your birthday.  
+ * API Guide: https://www.astrologyapi.com/docs/api-ref/75/sun_sign_prediction/daily/:zodiacName
+ *
+ */
 async function astrologyAPI(context) {
     var { mm, dd } = context;
 
@@ -16,14 +21,14 @@ async function astrologyAPI(context) {
         daily: "sun_sign_prediction/daily/"
     }
 
-    async function getResponse(resource, urlParams) {
+    async function getResponse(method, resource, urlParams) {
         var gotBase64 = auth.getBase64();
         var myHeaders = new Headers();
         myHeaders.append("Authorization", "Basic " + gotBase64);
         myHeaders.append("Content-Type", "application/x-www-form-urlencoded");
 
         var requestOptions = {
-            method: 'POST',
+            method,
             headers: myHeaders,
             // body: urlParams,
             redirect: 'follow'
@@ -37,12 +42,14 @@ async function astrologyAPI(context) {
     async function requestHoroscopePrediction(sign) {
         console.group("Astrology API");
         var dailyUrlPart = urls.daily;
-        const daily = await getResponse(dailyUrlPart, sign);
+        debugger;
+        const daily = await getResponse("POST", dailyUrlPart, sign);
         console.log({ daily });
         console.groupEnd();
     }
 
-    function changeBirthdayToSign(mm, dd) {
+    function changeBirthdayToSign(context) {
+        let { mm, dd } = context;
         mm = parseInt(mm);
         dd = parseInt(dd);
 
@@ -64,6 +71,7 @@ async function astrologyAPI(context) {
          * 
          */
 
+        debugger;
         if ((mm == 1 && dd <= 20) || (mm == 12 && dd >= 22)) {
             return "capricorn";
         } else if ((mm == 1 && dd >= 21) || (mm == 2 && dd <= 18)) {
