@@ -129,6 +129,7 @@ async function render(section) {
             let zodiac = localStorage.getItem(dbPrefix + "zodiac");
             if (zodiac) {
                 let horoscopeEl = document.querySelector("#front-horoscope");
+                horoscopeEl.innerHTML = "";
                 let imgEl = document.createElement("img");
                 imgEl.src = getZodiacImagePath(zodiac);
                 imgEl.alt = `Your zodiac sign ${zodiac}`;
@@ -146,6 +147,7 @@ async function render(section) {
                 relatedArtists = JSON.parse(relatedArtists);
                 // let songs = await spotifyClientCredentialsFlow_playlist({relatedArtists});
                 let playlistEl = document.querySelector("#front-playlist");
+                playlistEl.innerHTML = "";
                 let div1 = document.createElement("div"); // div has text content from CSS
                 playlistEl.appendChild(div1);
 
