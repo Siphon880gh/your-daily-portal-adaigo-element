@@ -61,3 +61,7 @@ function errorMessage(message) {
     $("#modal-error").find(".error").text(message);
     modals.error.open();
 }
+
+function getZodiacImagePath(sign) {
+    return `assets/img/zodiac-constellations/${sign}.png`;
+}

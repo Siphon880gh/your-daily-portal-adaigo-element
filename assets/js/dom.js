@@ -9,7 +9,9 @@ async function userInputsArtist() {
         // Start auth flow
         var { artistName, relatedArtists } = await spotifyClientCredentialsFlow({ artistName }); // Parameters: artist, callback 
         var someValue = await secondAPI({ searchTerm: artistName });
-        var someOtherValue = await astrologyAPI({ mm: "02", dd: "06" });
+
+        var astrologyResponse = await astrologyAPI({ mm: "02", dd: "06" });
+        var { sign, prediction } = astrologyResponse;
 
         // console.log("artist" + artistName);
         // console.log("artists" + relatedArtists);
