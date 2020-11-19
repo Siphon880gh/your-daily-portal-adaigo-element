@@ -5,7 +5,8 @@
  * @function clientCredentialsFlow
  * 
  */
-async function spotifyClientCredentialsFlow(artistName, callback) {
+async function spotifyClientCredentialsFlow(context, callback) {
+    var { artistName } = context;
 
     /**
      * Get the access token for your Spotify App
@@ -34,7 +35,7 @@ async function spotifyClientCredentialsFlow(artistName, callback) {
         return fetch("https://accounts.spotify.com/api/token", requestOptions)
             .then(response => response.json())
             .then(result => result)
-            .catch(error => alert('Error: ', error));
+            .catch(error => console.log('error', error));
     }; // getAccessToken
 
     /**
@@ -58,11 +59,7 @@ async function spotifyClientCredentialsFlow(artistName, callback) {
 
         return fetch("https://api.spotify.com/v1/search?q=artist:" + artistName + "&type=artist", requestOptions)
             .then(response => response.json())
-            .then(result =>{
-                console.log(result.artists.href, "Artist")
-                return result
-             
-            }) 
+            .then(result => result)
             .catch(error => console.log('error', error));
     } // getArtistId
 
@@ -91,35 +88,27 @@ async function spotifyClientCredentialsFlow(artistName, callback) {
             .catch(error => console.log('error', error));
     } // getRelatedArtists
 
-    /**
-     * @function main
-     * Ties all the steps together to get from Auth to information
+
+    /** 
+     * @expect {"access_token":"<Temporary Bearer Access Token>","token_type":"Bearer","expires_in":3600,"scope":""}
      */
-    async function main(callback) {
+    const accessTokenObject = await getAccessToken();
+    const bearerAccessToken = accessTokenObject.access_token;
 
-        /** 
-         * 
-         * @object accessTokenObject
-         * Expect {"access_token":"<Temporary Bearer Access Token>","token_type":"Bearer","expires_in":3600,"scope":""}
-         */
-        const accessTokenObject = await getAccessToken();
-        const bearerAccessToken = accessTokenObject.access_token;
+    const artistObject = await getArtistId(bearerAccessToken, artistName);
+    const artistId = artistObject.artists.items[0].id;
 
-        const artistObject = await getArtistId(bearerAccessToken, artistName);
-        const artistId = artistObject.artists.items[0].id;
+    const relatedArtistsObject = await getRelatedArtists(bearerAccessToken, artistId);
+    const relatedArtists = relatedArtistsObject.artists;
 
+    // Debugging
+    console.group("Spotify API")
+    console.table({
+        accessTokenObject,
+        artistObject,
+        relatedArtistsObject
+    });
+    console.groupEnd();
 
-        const relatedArtistsObject = await getRelatedArtists(bearerAccessToken, artistId);
-        const relatedArtists = relatedArtistsObject.artists;
-        callback(artistName, relatedArtists);
-
-        console.log("Fetched objects:")
-        console.table({
-            accessTokenObject,
-            artistObject,
-            relatedArtistsObject
-        });
-    } // main
-
-    main(callback);
+    return { artistName, relatedArtists };
 }
