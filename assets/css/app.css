@@ -46,9 +46,15 @@
     height: auto;
 }
 
+.results-spotify.card-action {
+    padding: 10px 0 0 0;
+    text-align: center;
+}
+
 .results-spotify .fa,
 .results-spotify a {
     color: var(--spotify) !important;
+    text-transform: none !important;
     transition: color 500ms;
 }
 

@@ -44,7 +44,7 @@ function domRendersArtists(artistName, relatedArtists) {
             .replace("_href_", href)
             .replace("_imageUrl_", imageUrl)
         var liEl = document.createElement("li");
-        liEl.classList = "list-group-item";
+        liEl.classList = "collection-item";
         liEl.innerHTML = template;
 
         return liEl;
