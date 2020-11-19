@@ -191,3 +191,11 @@ h3 {
     flex-wrap: wrap;
     justify-content: flex-start;
 }
+
+.playlist-column .clickable {
+    line-height: 2rem;
+}
+
+.playlist-column .clickable:hover {
+    color: var(--spotify);
+}

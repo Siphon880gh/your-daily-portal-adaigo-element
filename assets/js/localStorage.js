@@ -145,17 +145,18 @@ async function render(section) {
             let relatedArtists = localStorage.getItem(dbPrefix + "relatedArtists");
             if (relatedArtists) {
                 relatedArtists = JSON.parse(relatedArtists);
-                // let songs = await spotifyClientCredentialsFlow_playlist({relatedArtists});
                 let playlistEl = document.querySelector("#front-playlist");
                 playlistEl.innerHTML = "";
                 let div1 = document.createElement("div"); // div has text content from CSS
                 playlistEl.appendChild(div1);
 
                 // Create the two side by side list of songs
-                let songs = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17]; // Mock data
+                let songs = await spotifyClientCredentialsFlow_playlist({ relatedArtists });
                 songs = songs.map(iel => {
                     let div = document.createElement("div");
-                    div.textContent = iel;
+                    div.textContent = iel.songTitle;
+                    div.classList = "clickable";
+                    div.addEventListener("click", () => { window.open(iel.url); });
                     return div;
                 });
                 var songsLeft = songs.slice(0, 15);
@@ -172,6 +173,10 @@ async function render(section) {
                 let div = document.createElement("div");
                 div.append(splitPlaylistLeft, splitPlaylistRight);
                 playlistEl.append(div);
+
+                // Reset artist modal
+                $("#modal-artist .p2").addClass("hide");
+                $("#modal-artist .p1").removeClass("hide");
             }
             break;
     } // switch
