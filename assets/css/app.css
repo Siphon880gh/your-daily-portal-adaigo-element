@@ -1,6 +1,8 @@
 /* Color themes */
 
 :root {
+    --link: blue;
+    --link-hover: darkblue;
     --spotify: #1CB955;
     --spotify-feedback: #00ff5e;
     --spotify-visited: .5;
@@ -12,6 +14,22 @@
 
 .clickable {
     cursor: pointer;
+}
+
+.padding-1 {
+    padding: .25rem;
+}
+
+
+/* Reuseable Components */
+
+.x {
+    color: var(--link);
+    text-decoration: none;
+}
+
+.x:hover {
+    color: var(--link-hover);
 }
 
 
