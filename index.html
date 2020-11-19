@@ -56,39 +56,46 @@
 
 <body>
     <main class="container">
-        <h1>Get related artists</h1>
-        <p class="clickable">
-            Discover new music by searching for related artists. Enter your favorite artist's name in the URL. For example: <code onclick="location.href = '#Bebe Rexha'; 
-                                setTimeout(function() { 
-                                    location.reload(); 
-                                }, 100);">
-                                index.html#Bebe Rexha
-                        </code>
-        </p>
-        <div class="results-container">
-            <div class="results-title"></div>
-            <ul class="results-list collection">
-                <li class="collection-item">
-                    <i class="fas fa-spinner"></i>
-                    <span>Loading...</span>
-                </li>
-            </ul>
-        </div>
-        <div class="notes text-small">Open developer console to see response objects.</div>
     </main>
     <!-- container -->
 
     <!-- Modal Artist -->
-    <div id="modal-artist" class="modal">
-        <div class="modal-header">
-            <span class="modal-close clickable padding-1 right x">X</span>
+    <div id="modal-artist" class="modal bottom-sheet">
+        <div class="p1">
+            <div class="modal-header">
+                <span class="modal-close clickable padding-1 right x">X</span>
+            </div>
+            <div class="modal-content">
+                <h4><i class="fas fa-cog fa-fw"></i> Enter your favorite musician</h4>
+                <p>
+                    <label for="artist">Artist Name:</label>
+                    <input type="text" id="artist">
+                </p>
+            </div>
+            <div class="modal-footer">
+                <span class="waves-effect waves-green btn-flat clickable" onclick="saveArtistPg1( document.querySelector('#modal-artist .p1') );"><i class="fa fa-caret-right"></i> NEXT</span>
+            </div>
         </div>
-        <div class="modal-content">
-            <h4><i class="fas fa-cog fa-fw"></i> Daily Playlist</h4>
-            <p>Artist name input</p>
-        </div>
-        <div class="modal-footer">
-            <span class="modal-close waves-effect waves-green btn-flat clickable">NEXT</span>
+
+        <div class="p2 hide">
+            <div class="modal-header">
+                <span class="modal-close clickable padding-1 right x">X</span>
+            </div>
+            <div class="modal-content">
+                <h4><i class="fas fa-cog fa-fw"></i> Select related artists to curate your playlist</h4>
+                <div class="results-container">
+                    <div class="results-title"></div>
+                    <ul class="results-list collection">
+                        <li class="collection-item">
+                            <i class="fas fa-spinner"></i>
+                            <span>Loading...</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <span class="modal-close waves-effect waves-green btn-flat clickable" onclick="saveArtistPg2( document.querySelector('#modal-artist .p1') );"><i class="fa fa-save"></i> SAVE</span>
+            </div>
         </div>
     </div>
 
@@ -109,7 +116,7 @@
         </article>
     </template>
 
-    <!-- Modal Artist -->
+    <!-- Modal Horoscope -->
     <div id="modal-horoscope" class="modal bottom-sheet">
         <div class="modal-header">
             <span class="modal-close clickable padding-1 right x">X</span>

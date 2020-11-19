@@ -1,4 +1,5 @@
 async function userInputsArtist() {
+    return;
     if (window.location.hash.length > 1) {
         // Prepare artist name from the URL hash
         var artistName = window.location.hash;
@@ -22,6 +23,7 @@ function domRendersArtists(artistName, relatedArtists) {
     // Let user know which artist we are querying related artists for
     const artistTitleContainer = document.querySelector(".results-container .results-title");
     const artistTitleTextEl = document.createElement("h2");
+    artistTitleTextEl.id = "results-title-text";
     artistTitleTextEl.textContent = artistName;
     artistTitleContainer.append(artistTitleTextEl);
 
@@ -80,7 +82,11 @@ function initModals() {
         autoSize: true
     });
 
-    (function testHoroscope() {
-        modals.horoscope.open();
+    // (function testHoroscope() {
+    //     modals.horoscope.open();
+    // })();
+
+    (function testMusic() {
+        modals.artist.open();
     })();
 }
