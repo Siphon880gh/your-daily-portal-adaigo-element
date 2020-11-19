@@ -2,6 +2,7 @@
 
 :root {
     --spotify: #1CB955;
+    --spotify-feedback: #00ff5e;
     --spotify-visited: .5;
     /* opacity */
 }
@@ -46,13 +47,17 @@
 }
 
 .results-spotify .fa,
-.results-spotify a,
+.results-spotify a {
+    color: var(--spotify) !important;
+    transition: color 500ms;
+}
+
 .results-spotify a:hover {
-    color: var(--spotify);
+    color: var(--spotify-feedback) !important;
 }
 
 .results-spotify a:visited {
-    opacity: var(--spotify-visited);
+    opacity: var(--spotify-visited) !important;
 }
 
 .notes {
