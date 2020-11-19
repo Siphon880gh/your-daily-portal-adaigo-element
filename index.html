@@ -110,16 +110,19 @@
     </template>
 
     <!-- Modal Artist -->
-    <div id="modal-horoscope" class="modal">
+    <div id="modal-horoscope" class="modal bottom-sheet">
         <div class="modal-header">
             <span class="modal-close clickable padding-1 right x">X</span>
         </div>
         <div class="modal-content">
             <h4><i class="fas fa-cog fa-fw"></i> Daily Horoscope</h4>
-            <p>Birthday input</p>
+            <p>
+                <label for="datepicker">Birthdate:</label>
+                <input type="text" id="datepicker" class="hasDatepicker">
+            </p>
         </div>
         <div class="modal-footer">
-            <span class="modal-close waves-effect waves-green btn-flat clickable">SAVE</span>
+            <span class="modal-close waves-effect waves-green btn-flat clickable" onclick="saveHoroscope( document.querySelector('#datepicker').value );"><i class="fa fa-save"></i> SAVE</span>
         </div>
     </div>
 
@@ -130,13 +133,16 @@
 
     <!-- JS Vendors: Jquery UI -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
-    <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/themes/base/jquery-ui.min.css"></script> -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui-touch-punch/0.2.3/jquery.ui.touch-punch.min.js"></script>
+
+    <!-- JS Vendors: Moment JS -->
+    <script src="//cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js"></script>
 
     <!-- JS vendors: Materialize -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.js"></script>
 
     <!-- JS from my app -->
+    <script src="assets/js/localStorage.js"></script>
     <script src="assets/js/api-spotify.js"></script>
     <script src="assets/js/api-wiki.js"></script>
     <script src="assets/js/api-astrology.js"></script>

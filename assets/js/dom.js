@@ -68,11 +68,19 @@ let modals = {
 function initModals() {
     // Save Materialize modal instances
 
-    // - Artists Modal for setting favorite artist
+    // - Artists Modal for setting favorite artist -
     let artistModalEl = document.querySelector("#modal-artist");
     modals.artist = M.Modal.init(artistModalEl);
 
-    // - Horoscope Modal for setting birthday
+    // - Horoscope Modal for setting birthday -
     let horoscopeModalEl = document.querySelector("#modal-horoscope");
     modals.horoscope = M.Modal.init(horoscopeModalEl);
+    // Init datepicker ui
+    $("#datepicker").datepicker({
+        autoSize: true
+    });
+
+    (function testHoroscope() {
+        modals.horoscope.open();
+    })();
 }
