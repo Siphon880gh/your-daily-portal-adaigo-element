@@ -73,7 +73,8 @@ async function saveHoroscope(birthdate) {
         }
     } // changeBirthdayToSign
 
-    localStorage.setItem(dbPrefix + "zodiac", sign)
+    let zodiac = changeBirthdayToSign(mm, dd);
+    localStorage.setItem(dbPrefix + "zodiac", zodiac)
 
     modals.horoscope.close();
 }

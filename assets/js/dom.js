@@ -97,26 +97,26 @@ function initModals() {
     // - Message Modal for errors etc -
     let messageModalEl = document.querySelector("#modal-message");
     modals.message = M.Modal.init(messageModalEl);
-
-
-    // (function testHoroscope() {
-    //     modals.horoscope.open();
-    // })();
-
-    // (function testMusic() {
-    //     modals.artist.open();
-    // })();
-
-    // (function testYourName() {
-    //     modals.yourName.open();
-    // })();
 }
-
 
 function message(title, titleColor, message) {
     const $messageModal = $("#modal-message");
     $messageModal.find(".title").text(title);
     $messageModal.find(".title").css("color", titleColor);
-    $messageModal.find(".message").text(message);
+    $messageModal.find(".message").html(message);
     modals.message.open();
 }
+
+function newSection() {
+    if ($("#front-username").html().length === 0) {
+        modals.yourName.open();
+    } else if ($("#front-horoscope").html().length === 0) {
+        modals.horoscope.open();
+    } else if ($("#front-playlist").html().length === 0) {
+        modals.artist.open();
+    } else {
+        message("Coming soon", "Black", `There will be more elements you can add to the dashboard: Weather, Stocks, News.<br/><br/>Contact us at <a href="
+            mailto: weffung @ucdavis.edu ">weffung@ucdavis.edu</a> if you are interested in more elements.`)
+    }
+
+} // newSection
