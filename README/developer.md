@@ -1,10 +1,8 @@
 Developer ReadMe
 ===
 
-Settings
----
-
 UI
+---
 this web app is for people who want to have their daily horoscopes, discover songs they might like, weather, news, stocks, etc all on one page when they open their web browser everyday. for this version, we will be adding only daily horoscopes and songs.
 
 for the web app to generate the songs the user may be interested in, it'll ask user their favorite artist, searches up related artists, then have the user click out of those related artists which ones they may prefer. the user can preview their music.
@@ -16,6 +14,7 @@ UX
 The different sections of information are rearrangeable to the user's content. the zodiac sign is a constellation pattern, much like the constellation patterns floating around in the background. adding a purple background gives a Zen-like vibe. this example user likes to discover music and read horoscopes when they get on the computer. they just want to relax and vibe.
 
 Architecture files
+---
 1. app.js: Activates the particle JS backround, and initializes the Materialize CSS modals
 2. dom.js: Initializing modal, adding new sections, showing a message such as an error message, holding onto the modal instances, and rendering the related artists
 3. localStorage.js: has a poller (setInterval) that checks if there are blank sections and localStorage info that were not rendered. has all functions related to saving the inputs from the user modals. has render functions because much of the sections that get rendered requires API calls for up to date information (such as daily horoscope and the top tracks among the related artists selected)
