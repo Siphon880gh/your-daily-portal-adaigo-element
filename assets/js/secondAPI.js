@@ -34,8 +34,10 @@ async function secondAPI(context) {
     }
 
     var wikiResponse = await fetchWithoutAccessToken(searchTerm);
+    console.group("Related Wikipedia titles to " + searchTerm);
+    console.log({ wikiResponse });
+    console.groupEnd();
 
-    console.log(wikiResponse);
     var pages = wikiResponse.query.pages;
     var titles = [];
     for (const page in pages) {
@@ -45,14 +47,6 @@ async function secondAPI(context) {
             titles.push(title);
         }
     }
-
-    // Debugging
-    console.group("Related Wikipedia titles to " + searchTerm);
-    console.dir(titles);
-    // await getAccessToken
-    // await getSomeResponse
-    // Convert to object
-    console.groupEnd();
 
     // Then return object
     return { titles };

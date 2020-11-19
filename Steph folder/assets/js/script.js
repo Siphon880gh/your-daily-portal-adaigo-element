@@ -23,7 +23,7 @@ async function astrologyAPI(context) {
         myHeaders.append("Content-Type", "application/x-www-form-urlencoded");
 
         var requestOptions = {
-            method: 'GET',
+            method: 'POST',
             headers: myHeaders,
             // body: urlParams,
             redirect: 'follow'
@@ -33,19 +33,13 @@ async function astrologyAPI(context) {
         return fetch(url, requestOptions)
             .then(response => response.json())
             .then(result => result)
-            .catch(error => alert('Error: ', error));
     }
-    async function testFromSign(sign) {
+    async function requestHoroscopePrediction(sign) {
         console.group("Astrology API");
-        try {
-            var dailyUrlPart = urls.daily;
-            const daily = await getResponse(dailyUrlPart, sign);
-            console.log(daily);
-            console.groupEnd();
-        } catch (err) {
-            console.log(err);
-            console.groupEnd();
-        }
+        var dailyUrlPart = urls.daily;
+        const daily = await getResponse(dailyUrlPart, sign);
+        console.log({ daily });
+        console.groupEnd();
     }
 
     function changeBirthdayToSign(mm, dd) {
@@ -97,10 +91,9 @@ async function astrologyAPI(context) {
         }
     } // changeBirthdayToSign
 
-    testFromSign("pisces");
+    let sign = changeBirthdayToSign({ mm, dd })
+    return requestHoroscopePrediction(sign);
 }
-
-astrologyAPI({ mm: "02", dd: "06" });
 
 // window.astrologyReport()
 
