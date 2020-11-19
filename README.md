@@ -8,7 +8,7 @@ Demo
 
 Developers
 ---
-If interested in contributing, read the [developer ReadMe](https://siphon880gh.github.io/README/developer.md)
+If interested in contributing, read the [developer ReadMe](https://siphon880gh.github.io/ucla-collab-related-artists/README/developer.md)
 
 Screenshots
 ---
