@@ -3,7 +3,9 @@ const app = {
 
         try {
             initModals();
-            userInputsArtist();
+            (function detectIfFirstUse() {
+
+            })
         } catch (error) {
             alert(error)
         }
