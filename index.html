@@ -17,7 +17,8 @@
     </style>
 
     <!-- CSS vendors -->
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+    <!-- <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous"> -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css" ref="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css">
 
     <!-- CSS from my App -->
@@ -66,8 +67,8 @@
         </p>
         <div class="results-container">
             <div class="results-title"></div>
-            <ul class="results-list list-group">
-                <li class="list-group-item">
+            <ul class="results-list collection">
+                <li class="collection-item">
                     <i class="fas fa-spinner"></i>
                     <span>Loading...</span>
                 </li>
@@ -79,14 +80,14 @@
 
     <template class="template-artist-card">
         <article class="card text-center" data-artist-id="_id_">
-            <div class="card-body">
+            <div class="card-content">
                 
                 <figure>
-                    <figcaption class="card-header">_name_</figcaption>
+                    <figcaption class="card-title">_name_</figcaption>
                     <img src="_imageUrl_" alt="artist cover picture"/>
                 </figure>
 
-                <aside class="results-spotify card-footer">
+                <aside class="results-spotify card-action">
                     <a href="_href_" target="_blank"><i class="fab fa-spotify"></i> <span>Preview Music</span></a>
                 </aside>
             </div>
@@ -102,6 +103,9 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
     <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/themes/base/jquery-ui.min.css"></script> -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui-touch-punch/0.2.3/jquery.ui.touch-punch.min.js"></script>
+
+    <!-- JS vendors: Materialize -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.js"></script>
 
 
     <!-- JS from my app -->
