@@ -97,5 +97,6 @@ async function astrologyAPI(context) {
     } // changeBirthdayToSign
 
     let sign = changeBirthdayToSign({ mm, dd })
-    return requestHoroscopePrediction(sign);
+    let prediction = await requestHoroscopePrediction(sign);
+    return { sign, prediction };
 }
