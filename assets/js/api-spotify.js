@@ -94,20 +94,20 @@ async function spotifyClientCredentialsFlow(context, callback) {
      */
     const accessTokenObject = await getAccessToken();
     const bearerAccessToken = accessTokenObject.access_token;
+    console.group("Spotify API");
+    console.dir({ accessTokenObject })
+    console.groupEnd();
 
     const artistObject = await getArtistId(bearerAccessToken, artistName);
     const artistId = artistObject.artists.items[0].id;
+    console.group("Spotify API");
+    console.dir({ artistObject })
+    console.groupEnd();
 
     const relatedArtistsObject = await getRelatedArtists(bearerAccessToken, artistId);
     const relatedArtists = relatedArtistsObject.artists;
-
-    // Debugging
-    console.group("Spotify API")
-    console.table({
-        accessTokenObject,
-        artistObject,
-        relatedArtistsObject
-    });
+    console.group("Spotify API");
+    console.dir({ relatedArtistsObject })
     console.groupEnd();
 
     return { artistName, relatedArtists };

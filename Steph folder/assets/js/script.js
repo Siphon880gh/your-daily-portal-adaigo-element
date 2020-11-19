@@ -21,14 +21,14 @@ async function astrologyAPI(context) {
         daily: "sun_sign_prediction/daily/"
     }
 
-    async function getResponse(resource, urlParams) {
+    async function getResponse(method, resource, urlParams) {
         var gotBase64 = auth.getBase64();
         var myHeaders = new Headers();
         myHeaders.append("Authorization", "Basic " + gotBase64);
         myHeaders.append("Content-Type", "application/x-www-form-urlencoded");
 
         var requestOptions = {
-            method: 'GET',
+            method,
             headers: myHeaders,
             // body: urlParams,
             redirect: 'follow'
@@ -38,22 +38,18 @@ async function astrologyAPI(context) {
         return fetch(url, requestOptions)
             .then(response => response.json())
             .then(result => result)
-            .catch(error => alert('Error: ', error));
     }
-    async function testFromSign(sign) {
+    async function requestHoroscopePrediction(sign) {
         console.group("Astrology API");
-        try {
-            var dailyUrlPart = urls.daily;
-            const daily = await getResponse(dailyUrlPart, sign);
-            console.log(daily);
-            console.groupEnd();
-        } catch (err) {
-            console.log(err);
-            console.groupEnd();
-        }
+        var dailyUrlPart = urls.daily;
+        debugger;
+        const daily = await getResponse("POST", dailyUrlPart, sign);
+        console.log({ daily });
+        console.groupEnd();
     }
 
-    function changeBirthdayToSign(mm, dd) {
+    function changeBirthdayToSign(context) {
+        let { mm, dd } = context;
         mm = parseInt(mm);
         dd = parseInt(dd);
 
@@ -75,6 +71,7 @@ async function astrologyAPI(context) {
          * 
          */
 
+        debugger;
         if ((mm == 1 && dd <= 20) || (mm == 12 && dd >= 22)) {
             return "capricorn";
         } else if ((mm == 1 && dd >= 21) || (mm == 2 && dd <= 18)) {
@@ -102,10 +99,9 @@ async function astrologyAPI(context) {
         }
     } // changeBirthdayToSign
 
-    testFromSign("pisces");
+    let sign = changeBirthdayToSign({ mm, dd })
+    return requestHoroscopePrediction(sign);
 }
-
-astrologyAPI({ mm: "02", dd: "06" });
 
 // window.astrologyReport()
 
