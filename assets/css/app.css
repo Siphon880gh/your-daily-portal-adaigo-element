@@ -108,10 +108,17 @@ h3 {
     display: none !important;
 }
 
+#front-playlist>div:first-child {
+    margin-bottom: 10px;
+}
+
 #front-playlist>div:first-child::after {
-    text-align: center;
-    content: "Here are some songs just for you and your day";
+    content: "\f1bc\0a00 Here are some songs just for you and your day:";
+    font-family: 'Font Awesome 5 Brands';
+    font-size: 1.25rem;
+    font-weight: 400;
     flex-basis: 100%;
+    text-align: center;
 }
 
 #front-playlist>div {
