@@ -68,7 +68,8 @@ function initModals() {
 
     // Init datepicker ui
     $("#datepicker").datepicker({
-        autoSize: true
+        autoSize: true,
+        yearRange: "-100:+0"
     });
 
     // - Message Modal for errors etc -
