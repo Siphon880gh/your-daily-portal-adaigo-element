@@ -67,7 +67,8 @@ function domRendersArtists(artistName, relatedArtists) {
 // Materialize modal instances
 let modals = {
     "artist": null,
-    "horoscope": null
+    "horoscope": null,
+    "error": null
 }
 
 function initModals() {
@@ -80,10 +81,16 @@ function initModals() {
     // - Horoscope Modal for setting birthday -
     let horoscopeModalEl = document.querySelector("#modal-horoscope");
     modals.horoscope = M.Modal.init(horoscopeModalEl);
+
     // Init datepicker ui
     $("#datepicker").datepicker({
         autoSize: true
     });
+
+    // - Message Modal for errors etc -
+    let errorModalEl = document.querySelector("#modal-error");
+    modals.error = M.Modal.init(errorModalEl);
+
 
     // (function testHoroscope() {
     //     modals.horoscope.open();

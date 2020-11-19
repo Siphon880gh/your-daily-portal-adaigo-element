@@ -10,8 +10,9 @@ function saveHoroscope(birthdate) {
 // TODO: Change jQuery to javascript?
 
 async function saveArtistPg1(p1) {
-    if ($("#artist").val().length === 0)
+    if ($("#artist").val().length === 0) {
         return;
+    }
 
     $(p1).addClass("hide");
     $(p1).next().removeClass("hide");
@@ -21,8 +22,10 @@ async function saveArtistPg1(p1) {
 }
 
 async function saveArtistPg2(p2) {
-    if ($(p2).find(".results-list li.active").length === 0)
+    if ($(p2).find(".results-list li.active").length === 0) {
         return;
+    }
+    modals.artist.close();
 
     let relatedArtists = [];
 
