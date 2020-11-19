@@ -66,6 +66,7 @@ function domRendersArtists(artistName, relatedArtists) {
 
 // Materialize modal instances
 let modals = {
+    "yourName": null,
     "artist": null,
     "horoscope": null,
     "error": null
@@ -73,6 +74,10 @@ let modals = {
 
 function initModals() {
     // Save Materialize modal instances
+
+    // - Your Name modal for setting your display name -
+    let yourNameEl = document.querySelector("#modal-your-name");
+    modals.yourName = M.Modal.init(yourNameEl);
 
     // - Artists Modal for setting favorite artist -
     let artistModalEl = document.querySelector("#modal-artist");
@@ -96,7 +101,11 @@ function initModals() {
     //     modals.horoscope.open();
     // })();
 
-    (function testMusic() {
-        modals.artist.open();
+    // (function testMusic() {
+    //     modals.artist.open();
+    // })();
+
+    (function testYourName() {
+        modals.yourName.open();
     })();
 }

@@ -1,10 +1,27 @@
 let dbPrefix = "dailyDashboard_";
 
+function saveYourName(yourName) {
+    if (yourName.length === 0) {
+        errorMessage("Enter a display name you want to be greeted with.");
+        return;
+    }
+    console.log(yourName);
+
+    localStorage.setItem(dbPrefix + "displayName", yourName);
+    modals.yourName.close();
+}
+
 function saveHoroscope(birthdate) {
+    if (birthdate.length === 0) {
+        errorMessage("Select your birthday.");
+        return;
+    }
     const mm = moment(birthdate).format("MM");
     const dd = moment(birthdate).format("DD");
     localStorage.setItem(dbPrefix + "mm", mm);
     localStorage.setItem(dbPrefix + "dd", dd);
+
+    modals.horoscope.close();
 }
 
 // TODO: Change jQuery to javascript?
