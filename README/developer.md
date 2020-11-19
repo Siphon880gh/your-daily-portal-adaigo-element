@@ -17,7 +17,7 @@ Architecture files
 ---
 1. app.js: Activates the particle JS backround, and initializes the Materialize CSS modals
 2. dom.js: Initializing modal, adding new sections, showing a message such as an error message, holding onto the modal instances, and rendering the related artists
-3. localStorage.js: has a poller (setInterval) that checks if there are blank sections and localStorage info that were not rendered. has all functions related to saving the inputs from the user modals. has render functions because much of the sections that get rendered requires API calls for up to date information (such as daily horoscope and the top tracks among the related artists selected)
+3. localStorage.js: has a poller (setInterval) that checks if there are blank sections and localStorage info that were not rendered. Has all functions related to saving the inputs from the user modals. Has render functions because much of the sections that get rendered requires API calls for up to date information from user inputs saved in localStorage (such as daily horoscope and the top tracks among the related artists selected).
 
 API files:
 ---
