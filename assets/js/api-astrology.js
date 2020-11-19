@@ -1,5 +1,6 @@
 /**
  * @function astrologyAPI Calls Astrology API. Then gets daily horoscope based on your birthday.  
+ * How to call: var astrologyResponse = await astrologyAPI({ mm, dd });
  * API Guide: https://www.astrologyapi.com/docs/api-ref/75/sun_sign_prediction/daily/:zodiacName
  *
  */
