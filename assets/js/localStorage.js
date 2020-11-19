@@ -11,6 +11,7 @@ function saveHoroscope(birthdate) {
 
 async function saveArtistPg1(p1) {
     if ($("#artist").val().length === 0) {
+        errorMessage("Enter a musician name.");
         return;
     }
 
@@ -23,6 +24,7 @@ async function saveArtistPg1(p1) {
 
 async function saveArtistPg2(p2) {
     if ($(p2).find(".results-list li.active").length === 0) {
+        errorMessage("Please select related artists to curate your playlist.");
         return;
     }
     modals.artist.close();
@@ -36,4 +38,9 @@ async function saveArtistPg2(p2) {
     });
 
     localStorage.setItem(dbPrefix + "relatedArtists", JSON.stringify(relatedArtists));
+}
+
+function errorMessage(message) {
+    $("#modal-error").find(".error").text(message);
+    modals.error.open();
 }
