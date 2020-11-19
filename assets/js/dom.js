@@ -48,6 +48,9 @@ function domRendersArtists(artistName, relatedArtists) {
         var liEl = document.createElement("li");
         liEl.classList = "collection-item";
         liEl.innerHTML = template;
+        liEl.addEventListener("click", function(event) {
+            $(this).toggleClass("active");
+        });
 
         return liEl;
     });
