@@ -56,24 +56,21 @@
 
 <body>
     <!-- TODO: Refactor HTML and Javascript -->
+    <div class="settings" style="position:absolute; right:0; top:0; padding:10px;">
+        <span class="setting" onclick="modals.yourName.open();"><i class="fas fa-cog fa-fw"></i> Username</span>
+        <span class="setting" onclick="modals.horoscope.open();"><i class="fas fa-cog fa-fw"></i> Horoscope</span>
+        <span class="setting" onclick="modals.artist.open();"><i class="fas fa-cog fa-fw"></i> Playlist</span>
+    </div>
 
     <main class="container">
+
         <h1>Daily Dashboard</h1>
-        <h2>_username_line_</h2>
+        <h2 id="front-username"></h2>
         <div class="collection" style="display:flex; flex-direction:column; flex-wrap:wrap; justify-content:space-around; border:none; gap:10px;">
 
-            <div class="collection-item" data-style-off="height: 25vh; width: 25vh;" style="border:1px solid gray; flex-basis:100%; display:flex; flex-direction:column; justify-content:space-between; flex-wrap:wrap; text-align:center;">
-                <img src="" alt="Horoscope sign" style="text-align:center; width:100px; height:100px; margin: 10px auto;">
-                <div>_horoscope_prediction_</div>
-            </div>
+            <div id="front-horoscope" class="collection-item" style="border:1px solid gray; flex-basis:100%; display:flex; flex-direction:column; justify-content:space-between; flex-wrap:wrap; text-align:center;" data-will-append="img>div"></div>
 
-            <div class="collection-item" data-style-off="height: 25vh; width: 25vh;" style="border:1px solid gray; flex-basis:100%; flex-basis:100%; display:flex; flex-direction:column; justify-content:space-between; flex-wrap:wrap;">
-                <p style="flex-basis:100%; text-align:center">Here are some songs just for you and your day</p>
-                <div style="flex-basis:100%; display:flex; flex-direction:row; justify-content:space-between: flex-wrap:wrap;">
-                    <div class="playlist-column" style="flex-basis:50%;">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Velit quas ipsa ea repellendus est cum, illo corporis, quia sapiente, facilis quisquam explicabo ullam eveniet cupiditate aspernatur recusandae in et rem!</div>
-                    <div class="playlist-column" style="flex-basis:50%;">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Velit quas ipsa ea repellendus est cum, illo corporis, quia sapiente, facilis quisquam explicabo ullam eveniet cupiditate aspernatur recusandae in et rem!</div>
-                </div>
-            </div>
+            <div id="front-playlist" class="collection-item" style="border:1px solid gray; flex-basis:100%; flex-basis:100%; display:flex; flex-direction:column; justify-content:space-between; flex-wrap:nowrap;" data-will-append="p div>(.playlist-column*2)"></div>
 
             <div class="collection-item" style="border:none; transition: border 200ms; height:100px; display:flex; flex-direction:column; justify-content:space-around;">
                 <div class="clickable" style="display: block; width:25px; height:25px; margin:0 auto; text-align:center; font-size:2rem;" onmouseover="$(this).closest('.collection-item').css('border', '1px solid gray'); setTimeout(()=>{$(this).closest('.collection-item').css('border', 'none');}, 1000);"
@@ -101,7 +98,7 @@
             </p>
         </div>
         <div class="modal-footer">
-            <span class="waves-effect waves-green btn-flat clickable" onclick="saveYourName( document.querySelector('#your-name').value );"><i class="fa fa-save"></i> SAVE</span>
+            <span class="waves-effect waves-green btn-flat clickable" onclick="saveDisplayName( document.querySelector('#your-name').value );"><i class="fa fa-save"></i> SAVE</span>
         </div>
     </div>
 
@@ -198,11 +195,10 @@
 
 
     <!-- Modal Messsage -->
-    <div id="modal-error" class="modal">
+    <div id="modal-message" class="modal">
         <div class="modal-content">
-            <h3 style="color:red;"> Error</h3>
-            <p class="error">
-            </p>
+            <h3 class="title"></h3>
+            <p class="message"></p>
         </div>
         <div class="modal-footer">
             <button class="modal-close waves-effect waves-green btn-flat clickable">Ok</button>
@@ -228,7 +224,8 @@
     <script src="assets/js/localStorage.js"></script>
     <script src="assets/js/api-spotify.js"></script>
     <script src="assets/js/api-wiki.js"></script>
-    <script src="assets/js/api-astrology.js"></script>
+    <script src="assets/js/api-astrology-free.js"></script>
+    <!-- <script src="assets/js/api-astrology.js"></script> -->
     <script src="assets/js/dom.js"></script>
     <script src="assets/js/app.js"></script>
 

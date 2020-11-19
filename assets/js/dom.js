@@ -71,7 +71,7 @@ let modals = {
     "yourName": null,
     "artist": null,
     "horoscope": null,
-    "error": null
+    "message": null
 }
 
 function initModals() {
@@ -95,8 +95,8 @@ function initModals() {
     });
 
     // - Message Modal for errors etc -
-    let errorModalEl = document.querySelector("#modal-error");
-    modals.error = M.Modal.init(errorModalEl);
+    let messageModalEl = document.querySelector("#modal-message");
+    modals.message = M.Modal.init(messageModalEl);
 
 
     // (function testHoroscope() {
@@ -110,4 +110,13 @@ function initModals() {
     // (function testYourName() {
     //     modals.yourName.open();
     // })();
+}
+
+
+function message(title, titleColor, message) {
+    const $messageModal = $("#modal-message");
+    $messageModal.find(".title").text(title);
+    $messageModal.find(".title").css("color", titleColor);
+    $messageModal.find(".message").text(message);
+    modals.message.open();
 }

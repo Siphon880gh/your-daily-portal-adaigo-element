@@ -1,8 +1,6 @@
 /* Color themes */
 
 :root {
-    --link: blue;
-    --link-hover: darkblue;
     --spotify: #1CB955;
     --spotify-feedback: #00ff5e;
     --spotify-visited: .5;
@@ -30,12 +28,15 @@
 /* Reuseable Components */
 
 .x {
-    color: var(--link);
     text-decoration: none;
 }
 
 .x:hover {
-    color: var(--link-hover);
+    color: var(--spotify);
+}
+
+h2 {
+    font-size: 2rem !important;
 }
 
 h3 {
@@ -44,6 +45,65 @@ h3 {
 
 
 /* Components */
+
+.setting,
+.modal-footer {
+    cursor: pointer;
+}
+
+.modal-footer .btn-flat:hover {
+    color: var(--spotify);
+}
+
+.setting:not(:first-child) {
+    margin-left: 3ch;
+}
+
+.setting:hover {
+    color: var(--spotify);
+}
+
+#front-username {
+    text-align: center;
+}
+
+#front-username:empty {
+    display: none !important;
+}
+
+#front-horoscope:empty {
+    display: none !important;
+}
+
+#front-horoscope img {
+    text-align: center;
+    width: auto;
+    height: 100px;
+    margin: 10px auto;
+}
+
+#front-playlist:empty {
+    display: none !important;
+}
+
+#front-playlist>div:first-child::after {
+    text-align: center;
+    content: "Here are some songs just for you and your day";
+    flex-basis: 100%;
+}
+
+#front-playlist>div {
+    flex-basis: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    margin-bottom: 10px;
+}
+
+#front-playlist>div>.playlist-column {
+    flex-basis: 50%;
+}
 
 .results-title h2::after {
     content: " Related Artists";
@@ -104,7 +164,9 @@ h3 {
     opacity: var(--spotify-visited) !important;
 }
 
-.notes {
-    margin-top: 1rem;
-    color: gray;
+.playlist-column {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    justify-content: flex-start;
 }
