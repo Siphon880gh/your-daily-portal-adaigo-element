@@ -25,6 +25,24 @@
 }
 
 
+/* Theme */
+
+h1,
+h2,
+h3,
+.setting {
+    text-shadow: 1px 1px gray;
+}
+
+body {
+    color: white;
+}
+
+.modal {
+    color: black;
+}
+
+
 /* Reuseable Components */
 
 .x {
@@ -41,6 +59,10 @@ h2 {
 
 h3 {
     font-size: 1.78rem !important;
+}
+
+.collection-item {
+    background-color: rgba(255, 255, 255, 0.3) !important;
 }
 
 

@@ -113,11 +113,6 @@ async function saveArtistPg2(p2) {
     modals.artist.close();
 } // saveArtistPg2
 
-
-(function detectIfFirstUse() {
-
-})
-
 async function render(section) {
     function getZodiacImagePath(zodiac) {
         return `assets/img/zodiac-constellations/${zodiac}.png`;

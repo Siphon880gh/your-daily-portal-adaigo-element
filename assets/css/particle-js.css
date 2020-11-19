@@ -1,0 +1,15 @@
+:root {
+    --particle-js: purple;
+}
+
+canvas {
+    display: block;
+}
+
+#particles-js {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background-color: purple;
+    background-position: 50% 50%;
+}

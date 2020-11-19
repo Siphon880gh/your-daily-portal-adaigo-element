@@ -23,6 +23,7 @@
 
     <!-- CSS from my App -->
     <link rel="stylesheet" href="assets/css/app.css">
+    <link rel="stylesheet" href="assets/css/particle-js.css">
     <link rel="icon" href="assets/icons/Chrisbanks2-Cold-Fusion-Hd-Music-green.ico">
 
     <style>
@@ -54,7 +55,7 @@
 </head>
 
 
-<body>
+<body id="particles-js">
     <!-- TODO: Refactor HTML and Javascript -->
     <div class="settings" style="position:absolute; right:0; top:0; padding:10px;">
         <span class="setting" onclick="modals.yourName.open();"><i class="fas fa-cog fa-fw"></i> Username</span>
@@ -66,6 +67,7 @@
 
         <h1>Daily Dashboard</h1>
         <h2 id="front-username"></h2>
+
         <div class="collection" style="display:flex; flex-direction:column; flex-wrap:wrap; justify-content:space-around; border:none; gap:10px;">
 
             <div id="front-horoscope" class="collection-item" style="border:1px solid gray; flex-basis:100%; display:flex; flex-direction:column; justify-content:space-between; flex-wrap:wrap; text-align:center;" data-will-append="img>div"></div>
@@ -219,6 +221,9 @@
 
     <!-- JS vendors: Materialize -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.js"></script>
+
+    <!-- JS vendors: Particle JS  -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/particles.js/2.0.0/particles.js"></script>
 
     <!-- JS from my app -->
     <script src="assets/js/localStorage.js"></script>
