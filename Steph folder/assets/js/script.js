@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 var api = "planets";
 var userId = "614814";
 var apiKey = "90bbaa33a74a06735ef3546a68c265ad";
@@ -349,7 +348,6 @@ async function astrologyAPIFree(sign) {
 // });
 
 // module.exports = api;
-=======
 /**
  * @function astrologyAPI Calls Astrology API. Then gets daily horoscope based on your birthday.  
  * API Guide: https://www.astrologyapi.com/docs/api-ref/75/sun_sign_prediction/daily/:zodiacName
@@ -606,4 +604,3 @@ async function astrologyAPI(context) {
 
 // getResponse("sun_sign_prediction/daily/",
 //     "pisces", () => {}, userID, apiKey);
->>>>>>> master
