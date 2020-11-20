@@ -45,6 +45,10 @@ body {
     color: black;
 }
 
+.modal-bottom-sheet{
+    background-color: violet;
+}
+
 
 /* Reuseable Components */
 
