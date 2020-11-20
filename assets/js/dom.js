@@ -1,43 +1,8 @@
-function userInputsArtist() {
-    if (window.location.hash.length > 1) {
-        // Prepare artist name from the URL hash
-        var artist = window.location.hash;
-        artist = decodeURI(artist);
-        artist = artist.substr(1); // drop the "#" beginning of string
-
-        // Start auth flow
-        spotifyClientCredentialsFlow(artist, function() {
-            // Mock array
-            artistsArray = [{
-                    name: "Some artist 1",
-                    external_urls: {
-                        spotify: "https://www.google.com"
-                    },
-                    images: [{
-                        url: "http://via.placeholder.com/500x500?text=Mock"
-                    }]
-                },
-                {
-                    name: "Some artist 2",
-                    external_urls: {
-                        spotify: "https://www.google.com"
-                    },
-                    images: [{
-                        url: "http://via.placeholder.com/500x500?text=Mock"
-                    }]
-                }
-            ];
-            secondApiFlow(artistsArray, artist, domRendersArtists);
-        }); // Parameters: artist, callback 
-    } else {
-        throw ("Error: Your URL must end with #{artist-name}. Example is\nindex.html#Bebe Rexha");
-    }
-}
-
-function domRendersArtists(artistName, artists) {
+function domRendersArtists(artistName, relatedArtists) {
     // Let user know which artist we are querying related artists for
     const artistTitleContainer = document.querySelector(".results-container .results-title");
     const artistTitleTextEl = document.createElement("h2");
+    artistTitleTextEl.id = "results-title-text";
     artistTitleTextEl.textContent = artistName;
     artistTitleContainer.append(artistTitleTextEl);
 
@@ -48,7 +13,7 @@ function domRendersArtists(artistName, artists) {
     // Map takes an array and changes its elements to a different arrayl
     // For example: [1,2,3] => [2,4,6] if the map function takes each element and return el*2
     // Guide: https://www.w3schools.com/jsref/jsref_map.asp
-    var artistEls = artists.map((artist) => {
+    var artistEls = relatedArtists.map((artist) => {
         var { name, id } = artist;
         var href = artist.external_urls.spotify;
         var imageUrl = artist.images[0].url;
@@ -56,12 +21,15 @@ function domRendersArtists(artistName, artists) {
         var template = document.querySelector(".template-artist-card").innerHTML;
         template = template
             .replace("_name_", name)
-            .replace("_id_", name)
+            .replace("_id_", id)
             .replace("_href_", href)
             .replace("_imageUrl_", imageUrl)
         var liEl = document.createElement("li");
-        liEl.classList = "list-group-item";
+        liEl.classList = "collection-item";
         liEl.innerHTML = template;
+        liEl.addEventListener("click", function(event) {
+            $(this).toggleClass("active");
+        });
 
         return liEl;
     });
@@ -74,3 +42,62 @@ function domRendersArtists(artistName, artists) {
 
     // $(artistsContainer).sortable(); // making it drag and drop
 }
+
+// Materialize modal instances
+let modals = {
+    "yourName": null,
+    "artist": null,
+    "horoscope": null,
+    "message": null
+}
+
+function initModals() {
+    // Save Materialize modal instances
+
+    // - Your Name modal for setting your display name -
+    let yourNameEl = document.querySelector("#modal-your-name");
+    modals.yourName = M.Modal.init(yourNameEl);
+
+    // - Artists Modal for setting favorite artist -
+    let artistModalEl = document.querySelector("#modal-artist");
+    modals.artist = M.Modal.init(artistModalEl);
+
+    // - Horoscope Modal for setting birthday -
+    let horoscopeModalEl = document.querySelector("#modal-horoscope");
+    modals.horoscope = M.Modal.init(horoscopeModalEl);
+
+    let minYear = 1940;
+    let currentYear = parseInt(moment().format("YYYY"));
+    var instances = M.Datepicker.init(document.querySelector("#datepicker"), {
+        changeMonth: true,
+        changeYear: true,
+        yearRange: [minYear, currentYear]
+    });
+
+
+    // - Message Modal for errors etc -
+    let messageModalEl = document.querySelector("#modal-message");
+    modals.message = M.Modal.init(messageModalEl);
+}
+
+function message(title, titleColor, message) {
+    const $messageModal = $("#modal-message");
+    $messageModal.find(".title").text(title);
+    $messageModal.find(".title").css("color", titleColor);
+    $messageModal.find(".message").html(message);
+    modals.message.open();
+}
+
+function newSection() {
+    if ($("#front-username").html().length === 0) {
+        modals.yourName.open();
+    } else if ($("#front-horoscope").html().length === 0) {
+        modals.horoscope.open();
+    } else if ($("#front-playlist").html().length === 0) {
+        modals.artist.open();
+    } else {
+        message("Coming soon", "Black", `There will be more elements you can add to the dashboard: Weather, Stocks, News.<br/><br/>Contact us at <a href="
+            mailto: weffung @ucdavis.edu ">weffung@ucdavis.edu</a> if you are interested in more elements.`)
+    }
+
+} // newSection

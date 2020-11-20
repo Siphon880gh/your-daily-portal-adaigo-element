@@ -186,6 +186,18 @@ h3 {
     color: black;
 }
 
+<<<<<<< HEAD
+=======
+.results-list li.active {
+    background-color: lightgreen;
+}
+
+.results-list li.active .card-content {
+    background-color: lightgreen;
+    color: black;
+}
+
+>>>>>>> master
 #results-title-text {
     font-size: 1.5rem !important;
 }

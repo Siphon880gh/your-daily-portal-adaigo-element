@@ -8,69 +8,195 @@
 
 
     <!-- CSS vendors -->
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+    <!-- <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous"> -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css" ref="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css">
 
     <!-- CSS from my App -->
     <link rel="stylesheet" href="assets/css/app.css">
+    <link rel="stylesheet" href="assets/css/particle-js.css">
     <link rel="icon" href="assets/icons/Chrisbanks2-Cold-Fusion-Hd-Music-green.ico">
 </head>
 
-    <!-- -->
-<body>
+
+<body id="particles-js">
+    <!-- TODO: Refactor HTML and Javascript -->
+    <div class="settings" style="position:absolute; right:0; top:0; padding:10px;">
+        <span class="setting" onclick="modals.yourName.open();"><i class="fas fa-cog fa-fw"></i> Name</span>
+        <span class="setting" onclick="modals.horoscope.open();"><i class="fas fa-cog fa-fw"></i> Horoscope</span>
+        <span class="setting" onclick="modals.artist.open();"><i class="fas fa-cog fa-fw"></i> Playlist</span>
+    </div>
+
     <main class="container">
-        <h1>Get related artists</h1>
-        <p class="clickable">
-            Discover new music by searching for related artists. Enter your favorite artist's name in the URL. For example: <code onclick="location.href = '#Bebe Rexha'; 
-                                setTimeout(function() { 
-                                    location.reload(); 
-                                }, 100);">
-                                index.html#Bebe Rexha
-                        </code>
-        </p>
-        <div class="results-container">
-            <div class="results-title"></div>
-            <ul class="results-list list-group">
-                <li class="list-group-item">
-                    <i class="fas fa-spinner"></i>
-                    <span>Loading...</span>
-                </li>
-            </ul>
+
+        <h1>Daily Dashboard</h1>
+        <h2 id="front-username"></h2>
+
+        <div class="collection" style="display:flex; flex-direction:column; flex-wrap:wrap; justify-content:space-around; border:none; gap:10px;">
+
+            <div id="front-horoscope" class="collection-item" style="border:1px solid gray; flex-basis:100%; display:flex; flex-direction:column; justify-content:space-between; flex-wrap:wrap; text-align:center;" data-will-append="img>div"></div>
+
+            <div id="front-playlist" class="collection-item" style="border:1px solid gray; flex-basis:100%; flex-basis:100%; display:flex; flex-direction:column; justify-content:flex-start; flex-wrap:nowrap;" data-will-append="p div>(.playlist-column*2)"></div>
+
+            <div class="collection-item" style="border:none; transition: borderColor 200ms; height:100px; display:flex; flex-direction:column; justify-content:space-around;">
+                <div class="clickable" style="display: block; width:25px; height:25px; margin:0 auto; text-align:center; font-size:2rem;" onmouseover="$(this).closest('.collection-item').css('border', '1px solid gray'); setTimeout(()=>{$(this).closest('.collection-item').css('border-color', 'transparent');}, 1000);"
+                    onclick="newSection()">+</div>
+            </div>
+
         </div>
-        <div class="notes text-small">Open developer console to see response objects.</div>
     </main>
     <!-- container -->
 
+    <template class="template-elements">
+    </template>
+
+
+    <!-- Modal Horoscope -->
+    <div id="modal-your-name" class="modal bottom-sheet">
+        <div class="modal-header">
+            <span class="modal-close clickable padding-1 right x">X</span>
+        </div>
+        <div class="modal-content">
+            <h3><i class="fas fa-cog fa-fw"></i> How do you want to be called?</h3>
+            <p>
+                <label for="your-name">Your name</label>
+                <input type="text" id="your-name">
+            </p>
+        </div>
+        <div class="modal-footer">
+            <span class="waves-effect waves-green btn-flat clickable" onclick="saveDisplayName( document.querySelector('#your-name').value );"><i class="fa fa-save"></i> SAVE</span>
+        </div>
+    </div>
+
+    <!-- Template Related Artist Card -->
     <template class="template-artist-card">
         <article class="card text-center" data-artist-id="_id_">
-            <div class="card-body">
+            <div class="card-content">
                 
                 <figure>
-                    <figcaption class="card-header">_name_</figcaption>
+                    <figcaption class="card-title">_name_</figcaption>
                     <img src="_imageUrl_" alt="artist cover picture"/>
                 </figure>
 
-                <aside class="results-spotify card-footer">
+                <aside class="results-spotify card-action">
                     <a href="_href_" target="_blank"><i class="fab fa-spotify"></i> <span>Preview Music</span></a>
                 </aside>
             </div>
         </article>
     </template>
 
+    <!-- Modal Artist -->
+    <div id="modal-artist" class="modal bottom-sheet">
+        <div class="p1">
+            <div class="modal-header">
+                <span class="modal-close clickable padding-1 right x">X</span>
+            </div>
+            <div class="modal-content">
+                <h3><i class="fas fa-cog fa-fw"></i> Enter your favorite musician</h3>
+                <p>
+                    <label for="artist">Artist Name:</label>
+                    <input type="text" id="artist">
+                </p>
+            </div>
+            <div class="modal-footer sticky">
+                <span class="waves-effect waves-green btn-flat clickable" onclick="saveArtistPg1( document.querySelector('#modal-artist .p1') );"><i class="fa fa-caret-right"></i> NEXT</span>
+            </div>
+        </div>
+
+        <div class="p2 hide">
+            <div class="modal-header">
+                <span class="modal-close clickable padding-1 right x">X</span>
+            </div>
+            <div class="modal-content">
+                <h3><i class="fas fa-cog fa-fw"></i> Select related artists to curate your playlist</h3>
+                <div class="results-container">
+                    <div class="results-title"></div>
+                    <ul class="results-list collection">
+                        <li class="collection-item">
+                            <i class="fas fa-spinner"></i>
+                            <span>Loading...</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div class="modal-footer sticky">
+                <span class="waves-effect waves-green btn-flat clickable" onclick="saveArtistPg2( document.querySelector('#modal-artist .p2') );"><i class="fa fa-save"></i> SAVE</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- Template Related Artist Card -->
+    <template class="template-artist-card">
+        <article class="card text-center" data-artist-id="_id_">
+            <div class="card-content">
+                
+                <figure>
+                    <figcaption class="card-title">_name_</figcaption>
+                    <img src="_imageUrl_" alt="artist cover picture"/>
+                </figure>
+
+                <aside class="results-spotify card-action">
+                    <a href="_href_" target="_blank"><i class="fab fa-spotify"></i> <span>Preview Music</span></a>
+                </aside>
+            </div>
+        </article>
+    </template>
+
+    <!-- Modal Horoscope -->
+    <div id="modal-horoscope" class="modal bottom-sheet">
+        <div class="modal-header">
+            <span class="modal-close clickable padding-1 right x">X</span>
+        </div>
+        <div class="modal-content">
+            <h3><i class="fas fa-cog fa-fw"></i> Daily Horoscope</h3>
+            <p>
+                <label for="datepicker">Birthdate:</label>
+                <input type="text" id="datepicker" class="hasDatepicker">
+            </p>
+        </div>
+        <div class="modal-footer">
+            <span class="waves-effect waves-green btn-flat clickable" onclick="saveHoroscope( document.querySelector('#datepicker').value );"><i class="fa fa-save"></i> SAVE</span>
+        </div>
+    </div>
+
+
+    <!-- Modal Messsage -->
+    <div id="modal-message" class="modal">
+        <div class="modal-content">
+            <h3 class="title"></h3>
+            <p class="message"></p>
+        </div>
+        <div class="modal-footer">
+            <button class="modal-close waves-effect waves-green btn-flat clickable">Ok</button>
+        </div>
+    </div>
+
     <!-- JS vendors -->
     <script src="https://code.jquery.com/jquery-3.5.1.min.js" integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0=" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.15.0/umd/popper.min.js"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
 
     <!-- JS Vendors: Jquery UI -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/themes/base/jquery-ui.min.css"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui-touch-punch/0.2.3/jquery.ui.touch-punch.min.js"></script>
 
+    <!-- JS Vendors: Moment JS -->
+    <script src="//cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js"></script>
+
+    <!-- JS vendors: Materialize -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.js"></script>
+
+    <!-- Override Materialize DatePicker CSS -->
+    <link rel="stylesheet" href="assets/css/override-datepicker.css">
+
+    <!-- JS vendors: Particle JS  -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/particles.js/2.0.0/particles.js"></script>
 
     <!-- JS from my app -->
-    <script src="assets/js/secondAPI.js"></script>
-    <script src="assets/js/spotify.js"></script>
+    <script src="assets/js/localStorage.js"></script>
+    <script src="assets/js/api-spotify.js"></script>
+    <script src="assets/js/api-wiki.js"></script>
+    <script src="assets/js/api-astrology-free.js"></script>
+    <!-- <script src="assets/js/api-astrology.js"></script> -->
     <script src="assets/js/dom.js"></script>
     <script src="assets/js/app.js"></script>
 
