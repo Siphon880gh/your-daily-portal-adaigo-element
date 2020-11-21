@@ -6,7 +6,7 @@
  * 
  */
 async function spotifyClientCredentialsFlow_relatedArtists(context) {
-    var { artistName } = context;
+    let { artistName } = context;
 
     /**
      * Get the access token for your Spotify App
@@ -17,15 +17,15 @@ async function spotifyClientCredentialsFlow_relatedArtists(context) {
      * 
      */
     async function getAccessToken() {
-        var myHeaders = new Headers();
+        let myHeaders = new Headers();
         myHeaders.append("Authorization", "Basic NDg3MmM3MDU1NzVhNDU5M2EyMjRkZjhlY2RlOGNmZjY6MzM1MjA1ZmJkNzU0NDlmMTg1MTQxZGI4NDU2OGM4MGQ=");
         myHeaders.append("Content-Type", "application/x-www-form-urlencoded");
         myHeaders.append("Cookie", "__Host-device_id=AQCRGraHLh7exU3bLCTNZeXoxf5C5tdKL4vFbN4MYhpGZTwnMUisw35CBX0b6zvzrNzPHdFA25GqXO3NdX12SFcuCocGxmtGPA0");
 
-        var urlencoded = new URLSearchParams();
+        let urlencoded = new URLSearchParams();
         urlencoded.append("grant_type", "client_credentials");
 
-        var requestOptions = {
+        let requestOptions = {
             method: 'POST',
             headers: myHeaders,
             body: urlencoded,
@@ -48,10 +48,10 @@ async function spotifyClientCredentialsFlow_relatedArtists(context) {
      * 
      */
     async function getArtistId(bearerAccessToken, artistName) {
-        var myHeaders = new Headers();
+        let myHeaders = new Headers();
         myHeaders.append("Authorization", "Bearer " + bearerAccessToken);
 
-        var requestOptions = {
+        let requestOptions = {
             method: 'GET',
             headers: myHeaders,
             redirect: 'follow'
@@ -73,10 +73,10 @@ async function spotifyClientCredentialsFlow_relatedArtists(context) {
      * 
      */
     async function getRelatedArtists(bearerAccessToken, artistId) {
-        var myHeaders = new Headers();
+        let myHeaders = new Headers();
         myHeaders.append("Authorization", "Bearer " + bearerAccessToken);
 
-        var requestOptions = {
+        let requestOptions = {
             method: 'GET',
             headers: myHeaders,
             redirect: 'follow'
@@ -121,7 +121,7 @@ async function spotifyClientCredentialsFlow_relatedArtists(context) {
  * 
  */
 async function spotifyClientCredentialsFlow_playlist(context) {
-    var { relatedArtists } = context;
+    let { relatedArtists } = context;
 
     /**
      * Get the access token for your Spotify App
@@ -132,15 +132,15 @@ async function spotifyClientCredentialsFlow_playlist(context) {
      * 
      */
     async function getAccessToken() {
-        var myHeaders = new Headers();
+        let myHeaders = new Headers();
         myHeaders.append("Authorization", "Basic NDg3MmM3MDU1NzVhNDU5M2EyMjRkZjhlY2RlOGNmZjY6MzM1MjA1ZmJkNzU0NDlmMTg1MTQxZGI4NDU2OGM4MGQ=");
         myHeaders.append("Content-Type", "application/x-www-form-urlencoded");
         myHeaders.append("Cookie", "__Host-device_id=AQCRGraHLh7exU3bLCTNZeXoxf5C5tdKL4vFbN4MYhpGZTwnMUisw35CBX0b6zvzrNzPHdFA25GqXO3NdX12SFcuCocGxmtGPA0");
 
-        var urlencoded = new URLSearchParams();
+        let urlencoded = new URLSearchParams();
         urlencoded.append("grant_type", "client_credentials");
 
-        var requestOptions = {
+        let requestOptions = {
             method: 'POST',
             headers: myHeaders,
             body: urlencoded,
@@ -167,10 +167,10 @@ async function spotifyClientCredentialsFlow_playlist(context) {
         let relatedArtistIds = relatedArtists.map(relatedArtist => relatedArtist.id);
         let theirTopTracks = await relatedArtistIds.map(artistId => {
 
-            var myHeaders = new Headers();
+            let myHeaders = new Headers();
             myHeaders.append("Authorization", "Bearer " + bearerAccessToken);
 
-            var requestOptions = {
+            let requestOptions = {
                 method: 'GET',
                 headers: myHeaders,
                 redirect: 'follow'
@@ -206,7 +206,7 @@ async function spotifyClientCredentialsFlow_playlist(context) {
             console.group("Distributing artists among the playlist");
             console.info("Should count up to some number, then restart counting to the same number or less (if artist has less songs listed in their top tracks). It will cycle the number of times there are artists.");
             artists.forEach(topTracks => {
-                var topTracks = topTracks.tracks;
+                let topTracks = topTracks.tracks;
                 topTracks.forEach((track, i) => {
 
                     if (i < limitSongsPerArtist) {
@@ -237,9 +237,9 @@ async function spotifyClientCredentialsFlow_playlist(context) {
     console.dir({ accessTokenObject })
     console.groupEnd();
 
-    var songs = await getSongs(bearerAccessToken, relatedArtists);
+    let songs = await getSongs(bearerAccessToken, relatedArtists);
     // debugger;
-    // var songs = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 20]; // Mock data
+    // let songs = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 20]; // Mock data
     songs = songs.sort(function(a, b) { return 0.5 - Math.random() });
     console.group("Spotify API");
     console.dir({ songs })

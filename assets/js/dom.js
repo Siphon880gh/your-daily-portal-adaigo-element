@@ -55,6 +55,9 @@ function initModals() {
     // Save Materialize modal instances
 
     // - Your Name modal for setting your display name -
+
+    //Weng, does it make sense to refractor your code like this?
+    // let yourNameEl = $('.modal-your-name');
     let yourNameEl = document.querySelector('#modal-your-name');
     modals.yourName = M.Modal.init(yourNameEl);
 
@@ -88,16 +91,16 @@ function message(title, titleColor, message) {
     modals.message.open();
 }
 
-// function newSection() {
-//     if ($('#front-username').html().length === 0) {
-//         modals.yourName.open();
-//     } else if ($('#front-horoscope').html().length === 0) {
-//         modals.horoscope.open();
-//     } else if ($('#front-playlist').html().length === 0) {
-//         modals.artist.open();
-//     } else {
-//         message('Coming soon', 'Black', `There will be more elements you can add to the dashboard: Weather, Stocks, News.<br/><br/>Contact us at <a href='
-//             mailto: weffung @ucdavis.edu '>weffung@ucdavis.edu</a> if you are interested in more elements.`)
-//     }
+function newSection() {
+    if ($('#front-username').html().length === 0) {
+        modals.yourName.open();
+    } else if ($('#front-horoscope').html().length === 0) {
+        modals.horoscope.open();
+    } else if ($('#front-playlist').html().length === 0) {
+        modals.artist.open();
+    } else {
+        message('Coming soon', 'Black', `There will be more elements you can add to the dashboard: Weather, Stocks, News.<br/><br/>Contact us at <a href='
+            mailto: weffung @ucdavis.edu '>weffung@ucdavis.edu</a> if you are interested in more elements.`)
+    }
 
-// } // newSection
+} // newSection

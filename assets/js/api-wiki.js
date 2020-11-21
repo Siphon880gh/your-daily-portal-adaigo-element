@@ -1,16 +1,16 @@
 async function secondAPI(context) {
-    var { searchTerm } = context;
+    let { searchTerm } = context;
 
     async function getAccessToken() {
-        // var myHeaders = new Headers();
+        // let myHeaders = new Headers();
         // myHeaders.append("Authorization", "Basic NDg3MmM3MDU1NzVhNDU5M2EyMjRkZjhlY2RlOGNmZjY6MzM1MjA1ZmJkNzU0NDlmMTg1MTQxZGI4NDU2OGM4MGQ=");
         // myHeaders.append("Content-Type", "application/x-www-form-urlencoded");
         // myHeaders.append("Cookie", "__Host-device_id=AQCRGraHLh7exU3bLCTNZeXoxf5C5tdKL4vFbN4MYhpGZTwnMUisw35CBX0b6zvzrNzPHdFA25GqXO3NdX12SFcuCocGxmtGPA0");
 
-        // var urlencoded = new URLSearchParams();
+        // let urlencoded = new URLSearchParams();
         // urlencoded.append("grant_type", "client_credentials");
 
-        // var requestOptions = {
+        // let requestOptions = {
         //     method: 'POST',
         //     headers: myHeaders,
         //     body: urlencoded,
@@ -24,7 +24,7 @@ async function secondAPI(context) {
     }; // getAccessToken
 
     async function fetchWithoutAccessToken(searchTerm) {
-        var url = "https://en.wikipedia.org/w/api.php?action=query&origin=*&format=json&generator=search&gsrnamespace=0&gsrlimit=5&gsrsearch='" + searchTerm + "'";
+        let url = "https://en.wikipedia.org/w/api.php?action=query&origin=*&format=json&generator=search&gsrnamespace=0&gsrlimit=5&gsrsearch='" + searchTerm + "'";
 
 
         return fetch(url, {})
@@ -33,17 +33,17 @@ async function secondAPI(context) {
             .catch(error => console.log('error', error));
     }
 
-    var wikiResponse = await fetchWithoutAccessToken(searchTerm);
+    let wikiResponse = await fetchWithoutAccessToken(searchTerm);
     console.group("Related Wikipedia titles to " + searchTerm);
     console.log({ wikiResponse });
     console.groupEnd();
 
-    var pages = wikiResponse.query.pages;
-    var titles = [];
+    let pages = wikiResponse.query.pages;
+    let titles = [];
     for (const page in pages) {
         for (const pageId in pages) {
             //  console.log(pages[pageId]);
-            var title = pages[pageId].title;
+            let title = pages[pageId].title;
             titles.push(title);
         }
     }
@@ -73,9 +73,9 @@ async function secondAPI(context) {
 //Create a new object to interact with the server
 
 
-// var xhr = new XMLHttpRequest();
+// let xhr = new XMLHttpRequest();
 
-// var url = "https://en.wikipedia.org/w/api.php?action=query&origin=*&format=json&generator=search&gsrnamespace=0&gsrlimit=5&gsrsearch='New_England_Patriots'";
+// let url = "https://en.wikipedia.org/w/api.php?action=query&origin=*&format=json&generator=search&gsrnamespace=0&gsrlimit=5&gsrsearch='New_England_Patriots'";
 
 // // Provide 3 arguments (GET/POST, The URL, Async True/False)
 // xhr.open('GET', url, true);
@@ -83,7 +83,7 @@ async function secondAPI(context) {
 // // Once request has loaded...
 // xhr.onload = function() {
 //         // Parse the request into JSON
-//         var data = JSON.parse(this.response);
+//         let data = JSON.parse(this.response);
 
 //         // Log the data object
 //         console.log(data);
@@ -93,7 +93,7 @@ async function secondAPI(context) {
 
 //         // Loop through the data object
 //         // Pulling out the titles of each page
-//         for (var i in data.query.pages) {
+//         for (let i in data.query.pages) {
 //             console.log(data.query.pages[i].title);
 //         }
 //     }
