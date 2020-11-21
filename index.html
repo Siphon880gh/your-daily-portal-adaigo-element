@@ -52,22 +52,23 @@
 
 
     <!-- Modal Horoscope -->
+
     <div id="modal-your-name" class="modal bottom-sheet">
         <div class="modal-header">
             <span class="modal-close clickable padding-1 right x">X</span>
         </div>
-        <div class="modal-content">
+        <!-- Added class card-panel grey lighten-2 to make background color of modal grey -->
+        <div class="modal-content card-panel grey lighten-2">
             <h3><i class="fas fa-cog fa-fw"></i> How do you want to be called?</h3>
             <p>
                 <label for="your-name">Your name</label>
                 <input type="text" id="your-name">
             </p>
         </div>
-        <div class="modal-footer">
+        <div class="modal-footer card-panel grey lighten-2">
             <span class="waves-effect waves-green btn-flat clickable" onclick="saveDisplayName( document.querySelector('#your-name').value );"><i class="fa fa-save"></i> SAVE</span>
         </div>
     </div>
-
     <!-- Template Related Artist Card -->
     <template class="template-artist-card">
         <article class="card text-center" data-artist-id="_id_">
@@ -91,7 +92,7 @@
             <div class="modal-header">
                 <span class="modal-close clickable padding-1 right x">X</span>
             </div>
-            <div class="modal-content">
+            <div class="modal-content card-panel grey lighten-2">
                 <h3><i class="fas fa-cog fa-fw"></i> Enter your favorite musician</h3>
                 <p>
                     <label for="artist">Artist Name:</label>
@@ -177,7 +178,7 @@
 
     <!-- JS Vendors: Jquery UI -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui-touch-punch/0.2.3/jquery.ui.touch-punch.min.js"></script>
+    <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui-touch-punch/0.2.3/jquery.ui.touch-punch.min.js"></script> -->
 
     <!-- JS Vendors: Moment JS -->
     <script src="//cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js"></script>

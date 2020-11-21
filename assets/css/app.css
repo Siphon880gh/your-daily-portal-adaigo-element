@@ -10,7 +10,6 @@
     box-sizing: border-box;
 }
 
-
 /* Styling classes */
 
 .clickable {
@@ -43,10 +42,8 @@ body {
 
 .modal {
     color: black;
-}
-
-.modal-bottom-sheet{
-    background-color: violet;
+    background-color: plum;
+    /*  This changes the background color of modal */
 }
 
 
@@ -78,6 +75,8 @@ h3 {
 .setting,
 .modal-footer {
     cursor: pointer;
+    /* This is how Stephanie and Robert tried changing footer but instead background of nav */
+    background-color: lightpink;
 }
 
 .modal-footer .btn-flat:hover {
