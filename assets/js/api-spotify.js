@@ -92,22 +92,29 @@ async function spotifyClientCredentialsFlow_relatedArtists(context) {
     /** 
      * @expect {"access_token":"<Temporary Bearer Access Token>","token_type":"Bearer","expires_in":3600,"scope":""}
      */
-    let accessTokenObject = await getAccessToken();
-    let bearerAccessToken = accessTokenObject.access_token;
+    let accessTokenJSONResponse = await getAccessToken();
+    let bearerAccessToken = accessTokenJSONResponse.access_token;
     console.group("Spotify API");
-    console.dir({ accessTokenObject })
+    console.dir({ accessTokenJSONResponse })
     console.groupEnd();
 
-    let artistObject = await getArtistId(bearerAccessToken, artistNameInput);
-    let artistId = artistObject.artists.items[0].id;
+    // Get artist searched
+    let artistJSONResponse = await getArtistId(bearerAccessToken, artistNameInput);
+    let artistId = artistJSONResponse.artists.items[0].id;
+    let artistObject = artistJSONResponse.artists.items[0]; // For use several lines later
     console.group("Spotify API");
-    console.dir({ artistObject })
+    console.dir({ artistJSONResponse })
     console.groupEnd();
 
-    let relatedArtistsObject = await getRelatedArtists(bearerAccessToken, artistId);
-    let relatedArtists = relatedArtistsObject.artists;
+    // Get related artists
+    let relatedArtistsJSONResponse = await getRelatedArtists(bearerAccessToken, artistId);
+    let relatedArtists = relatedArtistsJSONResponse.artists;
+
+    // Add searched artist object to relatedArtists array so the user can add the searched artists' songs to the playlist too
+    relatedArtists.unshift(artistObject)
+
     console.group("Spotify API");
-    console.dir({ relatedArtistsObject })
+    console.dir({ relatedArtistsJSONResponse })
     console.groupEnd();
 
     return { artistNameInput, relatedArtists };
