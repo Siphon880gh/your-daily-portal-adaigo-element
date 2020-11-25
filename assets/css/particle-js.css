@@ -13,6 +13,6 @@ canvas {
 #particles-js {
     position: absolute;
     width: 100%;
-    background-color: purple;
+    background-color: rgb(83, 25, 218);
     background-position: 50% 50%;
 }

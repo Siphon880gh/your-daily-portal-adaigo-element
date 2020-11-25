@@ -1,18 +1,11 @@
 /* Color themes */
 
- :root {
-    --spotify: #f06ade;
+:root {
+    --spotify: #1CB955;
     --spotify-feedback: #00ff5e;
     --spotify-visited: .5;
     /* opacity */
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-} 
-
-
-
-
+}
 
 
 /* Styling classes */
@@ -42,31 +35,12 @@ h3,
 }
 
 body {
-    color: gold;
+    color: white;
 }
 
 .modal {
     color: black;
 }
-
-/*    Robert CSS
-
-/*  This changes the background color of modal */
-
-.modal-content {
-    background-image: linear-gradient(0deg, rgba(200,88,196,1) 41%, rgba(83,25,218,0.9668242296918768) 100%)
-}
-
-.modal-content h3{
-    color: rgb(238, 186, 14);
-}
-
-label {
-     color: whitesmoke;
-} 
-
-
-/*  End of Roberts CSS
 
 
 /* Reuseable Components */
@@ -91,20 +65,13 @@ h3 {
     background-color: rgba(255, 255, 255, 0.3) !important;
 }
 
+
 /* Components */
 
-
+.setting,
 .modal-footer {
     cursor: pointer;
-    /* This is how Stephanie and Robert tried changing footer but instead background of nav */
-    background-image: linear-gradient(to bottom,#C857C3 -5%, #EDBDFA 29%, #D6C183);
 }
-    /*  background-color: lightpink; */
-
-    .setting{
-        cursor: pointer;
-    }
-
 
 .modal-footer .btn-flat:hover {
     color: var(--spotify);
@@ -133,7 +100,7 @@ h3 {
 #front-horoscope img {
     text-align: center;
     width: auto;
-    height: 200px;
+    height: 100px;
     margin: 10px auto;
 }
 
@@ -185,27 +152,7 @@ h3 {
 
 .results-list li {
     display: inline-block;
-    width: 100%;
-        }
-        
-        @media (min-width: 480px) {
-            .results-list li {
-                width: calc(100% * (6/12));
-            }
-        }
-        
-        @media (min-width: 768px) {
-            .results-list li {
-                width: calc(100% * (4/12));
-            }
-        }
-        
-        @media (min-width: 1200px) {
-            .results-list li {
-                width: calc(100% * (3/12));
-            }
-        }
-
+}
 
 .results-list li.active {
     background-color: lightgreen;

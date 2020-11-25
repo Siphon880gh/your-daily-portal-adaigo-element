@@ -90,8 +90,8 @@ async function saveArtistPg1(p1) {
 
     $(p1).addClass("hide");
     $(p1).next().removeClass("hide");
-    var artistName = $("#artist").val();
-    var { artistName, relatedArtists } = await spotifyClientCredentialsFlow_relatedArtists({ artistName }); // Parameters: artist, callback 
+    let artistName = $("#artist").val();
+    let { artistName, relatedArtists } = await spotifyClientCredentialsFlow_relatedArtists({ artistName }); // Parameters: artist, callback 
     domRendersArtists(artistName, relatedArtists);
 }
 
@@ -136,7 +136,7 @@ async function render(section) {
                 horoscopeEl.append(imgEl);
 
                 let div = document.createElement("div");
-                var astrologyResponse = await astrologyAPIFree(zodiac);
+                let astrologyResponse = await astrologyAPIFree(zodiac);
                 div.innerHTML = `${astrologyResponse.current_date}<br/><br/>${astrologyResponse.description} You will be in this mood: ${astrologyResponse.mood}. Your lucky color, number, and time will be: ${astrologyResponse.color}, ${astrologyResponse.lucky_number}, ${astrologyResponse.lucky_time}`;
                 horoscopeEl.append(div);
             }
@@ -159,8 +159,8 @@ async function render(section) {
                     div.addEventListener("click", () => { window.open(iel.url); });
                     return div;
                 });
-                var songsLeft = songs.slice(0, 15);
-                var songsRight = songs.slice(15);
+                let songsLeft = songs.slice(0, 15);
+                let songsRight = songs.slice(15);
 
                 let splitPlaylistLeft = document.createElement("div");
                 splitPlaylistLeft.className = "playlist-column";

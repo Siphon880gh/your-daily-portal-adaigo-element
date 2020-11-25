@@ -1,47 +1,47 @@
 /**
  * @function astrologyAPI Calls Astrology API. Then gets daily horoscope based on your birthday.  
- * How to call: var astrologyResponse = await astrologyAPI({ mm, dd });
+ * How to call: let astrologyResponse = await astrologyAPI({ mm, dd });
  * API Guide: https://www.astrologyapi.com/docs/api-ref/75/sun_sign_prediction/daily/:zodiacName
  *
  */
 async function astrologyAPI(context) {
-    var { mm, dd } = context;
+    let { mm, dd } = context;
 
-    var auth = {
+    let auth = {
         userId: "614814",
         apiKey: "aa34ac4d7779fe666903ba00ba342be7",
         getBase64: function() {
-            var userId = auth.userId;
-            var apiKey = auth.apiKey;
+            let userId = auth.userId;
+            let apiKey = auth.apiKey;
             return btoa(userId + ":" + apiKey);
         }
     }
-    var urls = {
+    let urls = {
 
         base: "https://json.astrologyapi.com/v1/",
         daily: "sun_sign_prediction/daily/"
     }
 
     async function getResponse(method, resource, urlParams) {
-        var gotBase64 = auth.getBase64();
-        var myHeaders = new Headers();
+        let gotBase64 = auth.getBase64();
+        let myHeaders = new Headers();
         myHeaders.append("Authorization", "Basic " + gotBase64);
         myHeaders.append("Content-Type", "application/x-www-form-urlencoded");
 
-        var requestOptions = {
+        let requestOptions = {
             method,
             headers: myHeaders,
             // body: urlParams,
             redirect: 'follow'
         };
 
-        var url = urls.base + resource + urlParams;
+        let url = urls.base + resource + urlParams;
         return fetch(url, requestOptions)
             .then(response => response.json())
             .then(result => result)
     }
     async function requestHoroscopePrediction(sign) {
-        var dailyUrlPart = urls.daily;
+        let dailyUrlPart = urls.daily;
         const daily = await getResponse("POST", dailyUrlPart, sign);
         console.group("Astrology API");
         console.log({ daily });
