@@ -7,6 +7,7 @@ var inputValue;
 
 // helper functions
 function saveUserInput() {
+  console.log(birthdayInput.value, "birthdayInput")  
   let month = Number(birthdayInput.value.slice(5, 7));
   let day = Number(birthdayInput.value.slice(8, 10));
   inputValue = { mm: month, dd: day };
@@ -15,6 +16,7 @@ function saveUserInput() {
 
 function addContentDom(signData, signName) {
     results.innerHTML = `
+    <img class="signImage" src="../../assets/img/zodiac-constellations/${signName}.png">
     <h2>${signName}</h2>
     <p>Daily Horoscope: ${signData.description}<p>
     `
@@ -59,10 +61,11 @@ birthdayForm.addEventListener("click", function () {
   starSign = userDeterminedSign(inputValue)
 
   astrologyAPIFree(starSign)
+  document.getElementById("results").style.display="block"
   
 });
 
-async function astrologyAPIFree(sign) {
+async function astrologyAPIFree(horoscope) {
   var myHeaders = new Headers();
 
   var requestOptions = {
@@ -72,7 +75,7 @@ async function astrologyAPIFree(sign) {
   };
 
   return fetch(
-    "https://aztro.sameerkumar.website/?day=today&sign=" + sign,
+    "https://aztro.sameerkumar.website/?day=today&sign=" + horoscope,
     requestOptions
   )
     .then((response) => response.json())

@@ -1,10 +1,18 @@
-body {
-    background-color: red;
+
+:root {
+    --particle-js: purple;
 }
 
-#results {
-    background-color: white;
-    padding: 30px;
-    border-radius: 5px;
-    
+canvas {
+    display: block;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: -1;
 }
+
+#particles-js {
+    position: absolute;
+    width: 100%;
+    background-color: purple;
+    background-position: 50% 50%;
