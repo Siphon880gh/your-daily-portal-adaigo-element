@@ -205,8 +205,8 @@ async function spotifyClientCredentialsFlow_playlist(context) {
              */
             console.group("Distributing artists among the playlist");
             console.info("Should count up to some number, then restart counting to the same number or less (if artist has less songs listed in their top tracks). It will cycle the number of times there are artists.");
-            artists.forEach(topTracks => {
-                let topTracks = topTracks.tracks;
+            artists.forEach(artistTopTracks => {
+                let topTracks = artistTopTracks.tracks;
                 topTracks.forEach((track, i) => {
 
                     if (i < limitSongsPerArtist) {
