@@ -90,8 +90,8 @@ async function saveArtistPg1(p1) {
 
     $(p1).addClass("hide");
     $(p1).next().removeClass("hide");
-    let artistName = $("#artist").val();
-    let { artistName, relatedArtists } = await spotifyClientCredentialsFlow_relatedArtists({ artistName }); // Parameters: artist, callback 
+    let artistNameInput = $("#artist").val();
+    let { artistName, relatedArtists } = await spotifyClientCredentialsFlow_relatedArtists({ artistNameInput }); // Parameters: artist, callback 
     domRendersArtists(artistName, relatedArtists);
 }
 

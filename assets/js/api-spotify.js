@@ -6,7 +6,7 @@
  * 
  */
 async function spotifyClientCredentialsFlow_relatedArtists(context) {
-    let { artistName } = context;
+    let { artistNameInput } = context;
 
     /**
      * Get the access token for your Spotify App
@@ -98,7 +98,7 @@ async function spotifyClientCredentialsFlow_relatedArtists(context) {
     console.dir({ accessTokenObject })
     console.groupEnd();
 
-    let artistObject = await getArtistId(bearerAccessToken, artistName);
+    let artistObject = await getArtistId(bearerAccessToken, artistNameInput);
     let artistId = artistObject.artists.items[0].id;
     console.group("Spotify API");
     console.dir({ artistObject })
@@ -110,7 +110,7 @@ async function spotifyClientCredentialsFlow_relatedArtists(context) {
     console.dir({ relatedArtistsObject })
     console.groupEnd();
 
-    return { artistName, relatedArtists };
+    return { artistNameInput, relatedArtists };
 } // spotifyClientCredentialsFlow_relatedArtists
 
 /**
@@ -205,8 +205,8 @@ async function spotifyClientCredentialsFlow_playlist(context) {
              */
             console.group("Distributing artists among the playlist");
             console.info("Should count up to some number, then restart counting to the same number or less (if artist has less songs listed in their top tracks). It will cycle the number of times there are artists.");
-            artists.forEach(topTracks => {
-                let topTracks = topTracks.tracks;
+            artists.forEach(artistTopTracks => {
+                let topTracks = artistTopTracks.tracks;
                 topTracks.forEach((track, i) => {
 
                     if (i < limitSongsPerArtist) {
