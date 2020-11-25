@@ -1,14 +1,19 @@
 /* Color themes */
 
-:root {
-    --spotify: #1CB955;
+ :root {
+    --spotify: #f06ade;
     --spotify-feedback: #00ff5e;
     --spotify-visited: .5;
     /* opacity */
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-}
+} 
+
+
+
+
+
 
 /* Styling classes */
 
@@ -37,14 +42,31 @@ h3,
 }
 
 body {
-    color: white;
+    color: gold;
 }
 
 .modal {
     color: black;
-    background-color: plum;
-    /*  This changes the background color of modal */
 }
+
+/*    Robert CSS
+
+/*  This changes the background color of modal */
+
+.modal-content {
+    background-image: linear-gradient(0deg, rgba(200,88,196,1) 41%, rgba(83,25,218,0.9668242296918768) 100%)
+}
+
+.modal-content h3{
+    color: rgb(238, 186, 14);
+}
+
+label {
+     color: whitesmoke;
+} 
+
+
+/*  End of Roberts CSS
 
 
 /* Reuseable Components */
@@ -69,15 +91,20 @@ h3 {
     background-color: rgba(255, 255, 255, 0.3) !important;
 }
 
-
 /* Components */
 
-.setting,
+
 .modal-footer {
     cursor: pointer;
     /* This is how Stephanie and Robert tried changing footer but instead background of nav */
-    background-color: lightpink;
+    background-image: linear-gradient(to bottom,#C857C3 -5%, #EDBDFA 29%, #D6C183);
 }
+    /*  background-color: lightpink; */
+
+    .setting{
+        cursor: pointer;
+    }
+
 
 .modal-footer .btn-flat:hover {
     color: var(--spotify);
