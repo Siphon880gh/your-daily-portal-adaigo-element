@@ -6,7 +6,7 @@
  * 
  */
 async function spotifyClientCredentialsFlow_relatedArtists(context) {
-    let { artistName } = context;
+    let { artistNameInput } = context;
 
     /**
      * Get the access token for your Spotify App
@@ -98,7 +98,7 @@ async function spotifyClientCredentialsFlow_relatedArtists(context) {
     console.dir({ accessTokenObject })
     console.groupEnd();
 
-    let artistObject = await getArtistId(bearerAccessToken, artistName);
+    let artistObject = await getArtistId(bearerAccessToken, artistNameInput);
     let artistId = artistObject.artists.items[0].id;
     console.group("Spotify API");
     console.dir({ artistObject })
@@ -110,7 +110,7 @@ async function spotifyClientCredentialsFlow_relatedArtists(context) {
     console.dir({ relatedArtistsObject })
     console.groupEnd();
 
-    return { artistName, relatedArtists };
+    return { artistNameInput, relatedArtists };
 } // spotifyClientCredentialsFlow_relatedArtists
 
 /**
