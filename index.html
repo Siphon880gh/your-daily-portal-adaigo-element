@@ -61,12 +61,12 @@
             <h3><i class="fas fa-cog fa-fw"></i> How do you want to be called?</h3>
             <p>
                 <label for="your-name">Your name</label>
-                <input type="text" id="your-name">
+                <input type="text" id="your-name" onkeydown='if(event.key.toLowerCase()==="enter") $(this).closest(".modal").find(".js-btn").click();'>
             </p>
         </div>
         <div class="modal-footer">
             <!-- This is how you change the backgound of the save button bar -->
-            <span class="waves-effect waves-green btn-flat clickable" onclick="saveDisplayName( document.querySelector('#your-name').value );"><i class="fa fa-save"></i> SAVE</span>
+            <span class="waves-effect waves-green btn-flat clickable js-btn" onclick="saveDisplayName( document.querySelector('#your-name').value );"><i class="fa fa-save"></i> SAVE</span>
         </div>
     </div>
 
@@ -97,11 +97,11 @@
                 <h3><i class="fas fa-cog fa-fw"></i> Enter your favorite musician</h3>
                 <p>
                     <label for="artist">Artist Name:</label>
-                    <input type="text" id="artist">
+                    <input type="text" id="artist" onkeydown='if(event.key.toLowerCase()==="enter") $(this).closest(".modal").find(".js-btn").click();'>
                 </p>
             </div>
             <div class="modal-footer sticky">
-                <span class="waves-effect waves-green btn-flat clickable" onclick="saveArtistPg1( document.querySelector('#modal-artist .p1') );"><i class="fa fa-caret-right"></i> NEXT</span>
+                <span class="waves-effect waves-green btn-flat clickable js-btn" onclick="saveArtistPg1( document.querySelector('#modal-artist .p1') );"><i class="fa fa-caret-right"></i> NEXT</span>
             </div>
         </div>
 
@@ -153,11 +153,11 @@
             <h3><i class="fas fa-cog fa-fw"></i> Daily Horoscope</h3>
             <p>
                 <label for="datepicker">Birthdate:</label>
-                <input type="text" id="datepicker" class="hasDatepicker">
+                <input type="text" id="datepicker" class="hasDatepicker" onkeydown='if(event.key.toLowerCase()==="enter") $(this).closest(".modal").find(".js-btn").click();'>
             </p>
         </div>
         <div class="modal-footer">
-            <span class="waves-effect waves-green btn-flat clickable" onclick="saveHoroscope( document.querySelector('#datepicker').value );"><i class="fa fa-save"></i> SAVE</span>
+            <span class="waves-effect waves-green btn-flat clickable js-btn" onclick="saveHoroscope( document.querySelector('#datepicker').value );"><i class="fa fa-save"></i> SAVE</span>
         </div>
     </div>
 
