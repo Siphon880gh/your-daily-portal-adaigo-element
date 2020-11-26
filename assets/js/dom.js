@@ -1,6 +1,7 @@
 function domRendersArtists(artistName, relatedArtists) {
     // Let user know which artist we are querying related artists for
     const artistTitleContainer = document.querySelector('.results-container .results-title');
+    artistTitleContainer.innerHTML = "";
     const artistTitleTextEl = document.createElement('h2');
     artistTitleTextEl.id = 'results-title-text';
     artistTitleTextEl.textContent = artistName;

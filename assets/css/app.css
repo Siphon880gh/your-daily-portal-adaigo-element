@@ -2,7 +2,7 @@
 
  :root {
     --spotify: #f06ade;
-    --spotify-feedback: #00ff5e;
+    --spotify-feedback: #72f367;
     --spotify-visited: .5;
     /* opacity */
     margin: 0;
@@ -167,15 +167,20 @@ h3 {
     flex-basis: 50%;
 }
 
+.result-title-text {
+    background-color: rgb(119, 29, 29) !important;
+}
+
 .results-title h2::after {
     content: " Related Artists";
-    font-weight: 200;
+    font-weight: 400;
 }
 
 .results-title h2 {
-    color: rgb(72, 0, 155);
+    color: rgb(96, 2, 124);
     text-align: center;
     margin-bottom: 1rem;
+    padding: .75rem 0;
 }
 
 .results-list {
@@ -213,12 +218,13 @@ h3 {
 }
 
 .results-list li.active .card-content {
-    background-color: lightgreen;
+    background-color: rgb(157, 248, 72);
     color: black;
 }
 
 #results-title-text {
     font-size: 1.5rem !important;
+    background-color: rgb(142, 147, 167);
 }
 
 .results-list img {
@@ -239,7 +245,7 @@ h3 {
 }
 
 .results-spotify a:hover {
-    color: var(--spotify-feedback) !important;
+    color: var(--spotify-feedback-variant) !important;
 }
 
 .results-spotify a:visited {
@@ -271,9 +277,9 @@ h3 {
 }
 
 .results-container{
-    background: rgb(152,141,109);
-    background: linear-gradient(180deg, rgba(152,141,109,1) 27%, rgba(89,25,218,0.9668242296918768) 100%);
-}
+    /* background: rgb(152,141,109);
+    background: linear-gradient(180deg, rgba(152,141,109,1) 27%, rgba(89,25,218,0.9668242296918768) 100%); */
+} 
 
 .modal-content{
     background-color: gray;
