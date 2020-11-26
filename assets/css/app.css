@@ -173,6 +173,7 @@ h3 {
 }
 
 .results-title h2 {
+    color: rgb(72, 0, 155);
     text-align: center;
     margin-bottom: 1rem;
 }
@@ -259,3 +260,22 @@ h3 {
 .playlist-column .clickable:hover {
     color: var(--spotify);
 }
+
+
+
+
+
+.card-content{
+    background-color: #5319DA;
+    color: gold;
+}
+
+.results-container{
+    background: rgb(152,141,109);
+    background: linear-gradient(180deg, rgba(152,141,109,1) 27%, rgba(89,25,218,0.9668242296918768) 100%);
+}
+
+.modal-content{
+    background-color: gray;
+}
+
