@@ -99,8 +99,8 @@ function newSection() {
     } else if ($('#front-playlist').html().length === 0) {
         modals.artist.open();
     } else {
-        message('Coming soon', 'Black', `There will be more elements you can add to the dashboard: Weather, Stocks, News.<br/><br/>Contact us at <a href='
-            mailto: weffung @ucdavis.edu '>weffung@ucdavis.edu</a> if you are interested in more elements.`)
+        message('Coming soon', 'Black', `New elements coming to the Daily Dashboard: Weather, Stocks, News, Favorites, Todo List, Reading List. We may make this into a Chrome Extension or Firefox extension.<br/><br/>Business opportunity? Add ads on users' free version.<br/><br/>Contact us at <a href='
+            mailto: weffung @ucdavis.edu '>weffung@ucdavis.edu</a> if you are interested.`)
     }
 
 } // newSection
