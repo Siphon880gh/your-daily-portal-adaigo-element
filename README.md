@@ -10,14 +10,16 @@ Demo
 
 Developers
 ---
-If interested in contributing, read the [developer ReadMe](https://siphon880gh.github.io/your-daily-portal-adaigo-element/README/developer.md)
+If interested in contributing, read the [developer ReadMe](README/developer.md)
 
 Nerd Stats
 ---
-The original wireframes for starting off this app if you're [interested](https://siphon880gh.github.io/your-daily-portal-adaigo-element/READMEWF.md)
+The original wireframes for starting off this app if you're [interested](README/original-wireframes.md).
+
+The screen recording below is less than 10mb. Otherwise Github would not render it. If you are interested in how I recorded and compressed the screen recording, here is the [compression guide](README/compression.md).
 
 
-Screenshots
+Screen Recording
 ---
 ![GIF recording of app](README/Demonstration-Lt10mb.gif)
 
