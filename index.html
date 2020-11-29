@@ -28,6 +28,7 @@
         <span class="setting" onclick="modals.horoscope.open();"><i class="fas fa-cog fa-fw"></i> Horoscope</span>
         <span class="setting" onclick="modals.artist.open();"><i class="fas fa-cog fa-fw"></i> Playlist</span>
         <span class="setting" onclick="modals.modes.open();"><i class="fas fa-cog fa-fw"></i> Mode</span>
+        <span class="setting" onclick="modals.reset.open();"><i class="fas fa-eraser fa-fw"></i> Reset</span>
     </div>
 
     <main class="container">
@@ -187,6 +188,18 @@
         <div class="modal-footer">
             <!-- This is how you change the backgound of the save button bar -->
             <span class="waves-effect waves-green btn-flat clickable js-btn" onclick="saveMode( document.querySelector('#modes-input') );"><i class="fa fa-save"></i> SAVE</span>
+        </div>
+    </div>
+
+    <!-- Modal Reset -->
+    <div id="modal-reset" class="modal">
+        <div class="modal-content">
+            <h3 class="title"></h3>
+            <p class="message">Remove all elements?</p>
+        </div>
+        <div class="modal-footer">
+            <button class="modal-close waves-effect waves-green btn-flat underline clickable" onclick='localStorage.clear(); window.location.href=window.location.href;'>Ok</button>
+            <button class="modal-close waves-effect waves-green btn-flat clickable">Cancel</button>
         </div>
     </div>
 

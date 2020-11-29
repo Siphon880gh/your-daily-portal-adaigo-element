@@ -8,11 +8,7 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-} 
-
-
-
-
+}
 
 
 /* Styling classes */
@@ -29,6 +25,10 @@
     position: sticky;
     bottom: 0;
     left: 0
+}
+
+.underline {
+    text-decoration: underline;
 }
 
 
@@ -49,21 +49,22 @@ body {
     color: black;
 }
 
+
 /*    Robert CSS
 
 /*  This changes the background color of modal */
 
 .modal-content {
-    background-image: linear-gradient(0deg, rgba(200,88,196,1) 41%, rgba(83,25,218,0.9668242296918768) 100%)
+    background-image: linear-gradient(0deg, rgba(200, 88, 196, 1) 41%, rgba(83, 25, 218, 0.9668242296918768) 100%)
 }
 
-.modal-content h3{
+.modal-content h3 {
     color: rgb(238, 186, 14);
 }
 
 label {
-     color: whitesmoke;
-} 
+    color: whitesmoke;
+}
 
 
 /*  End of Roberts CSS
@@ -91,20 +92,21 @@ h3 {
     background-color: rgba(255, 255, 255, 0.3) !important;
 }
 
-/* Components */
 
+/* Components */
 
 .modal-footer {
     cursor: pointer;
     /* This is how Stephanie and Robert tried changing footer but instead background of nav */
-    background-image: linear-gradient(to bottom,#C857C3 -5%, #EDBDFA 29%, #D6C183);
+    background-image: linear-gradient(to bottom, #C857C3 -5%, #EDBDFA 29%, #D6C183);
 }
-    /*  background-color: lightpink; */
 
-    .setting{
-        cursor: pointer;
-    }
 
+/*  background-color: lightpink; */
+
+.setting {
+    cursor: pointer;
+}
 
 .modal-footer .btn-flat:hover {
     color: var(--spotify);
@@ -192,26 +194,25 @@ h3 {
 .results-list li {
     display: inline-block;
     width: 100%;
-        }
-        
-        @media (min-width: 480px) {
-            .results-list li {
-                width: calc(100% * (6/12));
-            }
-        }
-        
-        @media (min-width: 768px) {
-            .results-list li {
-                width: calc(100% * (4/12));
-            }
-        }
-        
-        @media (min-width: 1200px) {
-            .results-list li {
-                width: calc(100% * (3/12));
-            }
-        }
+}
 
+@media (min-width: 480px) {
+    .results-list li {
+        width: calc(100% * (6/12));
+    }
+}
+
+@media (min-width: 768px) {
+    .results-list li {
+        width: calc(100% * (4/12));
+    }
+}
+
+@media (min-width: 1200px) {
+    .results-list li {
+        width: calc(100% * (3/12));
+    }
+}
 
 .results-list li.active {
     background-color: lightgreen;
@@ -267,21 +268,16 @@ h3 {
     color: var(--spotify);
 }
 
-
-
-
-
-.card-content{
+.card-content {
     background-color: #5319DA;
     color: gold;
 }
 
-.results-container{
+.results-container {
     /* background: rgb(152,141,109);
     background: linear-gradient(180deg, rgba(152,141,109,1) 27%, rgba(89,25,218,0.9668242296918768) 100%); */
-} 
-
-.modal-content{
-    background-color: gray;
 }
 
+.modal-content {
+    background-color: gray;
+}

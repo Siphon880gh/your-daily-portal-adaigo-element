@@ -49,8 +49,9 @@ let modals = {
     'yourName': null,
     'artist': null,
     'horoscope': null,
-    'message': null,
-    'modes': null
+    'modes': null,
+    'reset': null,
+    'message': null
 }
 
 function initModals() {
@@ -67,10 +68,6 @@ function initModals() {
     let artistModalEl = document.querySelector('#modal-artist');
     modals.artist = M.Modal.init(artistModalEl);
 
-    // - Modes Modal for setting the mood -
-    let modesModalEl = document.querySelector('#modal-modes');
-    modals.modes = M.Modal.init(modesModalEl);
-
     // - Horoscope Modal for setting birthday -
     let horoscopeModalEl = document.querySelector('#modal-horoscope');
     modals.horoscope = M.Modal.init(horoscopeModalEl);
@@ -83,6 +80,13 @@ function initModals() {
         yearRange: [minYear, currentYear]
     });
 
+    // - Modes Modal for setting the mood -
+    let modesModalEl = document.querySelector('#modal-modes');
+    modals.modes = M.Modal.init(modesModalEl);
+
+    // - Reset Modal to clear all elements -
+    let resetModalEl = document.querySelector('#modal-reset');
+    modals.reset = M.Modal.init(resetModalEl);
 
     // - Message Modal for errors etc -
     let messageModalEl = document.querySelector('#modal-message');
