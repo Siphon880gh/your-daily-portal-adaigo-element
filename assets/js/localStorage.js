@@ -161,6 +161,7 @@ async function render(section) {
                  */
                 if (modeSelected === "mode-zen") {
                     $("#particles-js").css("background-color", 'rgb(83, 25, 218)');
+                    app.activateParticleJs();
                 } else if (modeSelected === "mode-clean") {
                     // Clean mode is gray background with lesser dots and lines in the background
                     $("#particles-js").css("background-color", "gray");
@@ -172,6 +173,7 @@ async function render(section) {
                     };
                 } else if (modeSelected === "mode-dark") {
                     $("#particles-js").css("background-color", "black");
+                    app.activateParticleJs();
                 }
             } // if
             break;
