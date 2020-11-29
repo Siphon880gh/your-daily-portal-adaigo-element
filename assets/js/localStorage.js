@@ -10,6 +10,15 @@ function saveDisplayName(yourName) {
     localStorage.setItem(dbPrefix + "displayName", yourName);
     render("displayName");
     modals.yourName.close();
+};
+
+function saveMode(modeForm) {
+    console.log(modeForm);
+    let modeSelected = modeForm.querySelector('input:checked').value;
+
+    localStorage.setItem(dbPrefix + "modeSelected", modeSelected);
+    render("mode");
+    modals.modes.close();
 }
 
 async function saveHoroscope(birthdate) {
@@ -140,6 +149,31 @@ async function render(section) {
                 div.innerHTML = `${astrologyResponse.current_date}<br/><br/>${astrologyResponse.description} You will be in this mood: ${astrologyResponse.mood}. Your lucky color, number, and time will be: ${astrologyResponse.color}, ${astrologyResponse.lucky_number}, ${astrologyResponse.lucky_time}`;
                 horoscopeEl.append(div);
             }
+            break;
+        case "mode":
+            let modeSelected = localStorage.getItem(dbPrefix + "modeSelected");
+            if (modeSelected) {
+                /**
+                 * Different modes are:
+                 *   mode-zen
+                 *   mode-clean
+                 *   mode-dark
+                 */
+                if (modeSelected === "mode-zen") {
+                    $("#particles-js").css("background-color", 'rgb(83, 25, 218)');
+                } else if (modeSelected === "mode-clean") {
+                    // Clean mode is gray background with lesser dots and lines in the background
+                    $("#particles-js").css("background-color", "gray");
+                    particlesJS("particles-js", { "particles": { "number": { "value": 40, "density": { "enable": true, "value_area": 900 } }, "color": { "value": "#ffffff" }, "shape": { "type": "circle", "stroke": { "width": 0, "color": "#000000" }, "polygon": { "nb_sides": 2 }, "image": { "src": "img/github.svg", "width": 100, "height": 100 } }, "opacity": { "value": 0.5, "random": false, "anim": { "enable": false, "speed": 1, "opacity_min": 0.1, "sync": false } }, "size": { "value": 3, "random": true, "anim": { "enable": false, "speed": 40, "size_min": 0.1, "sync": false } }, "line_linked": { "enable": true, "distance": 150, "color": "#ffffff", "opacity": 0.4, "width": 1 }, "move": { "enable": true, "speed": 4, "direction": "none", "random": false, "straight": false, "out_mode": "out", "bounce": false, "attract": { "enable": false, "rotateX": 600, "rotateY": 1200 } } }, "interactivity": { "detect_on": "canvas", "events": { "onhover": { "enable": true, "mode": "repulse" }, "onclick": { "enable": true, "mode": "push" }, "resize": true }, "modes": { "grab": { "distance": 600, "line_linked": { "opacity": 1 } }, "bubble": { "distance": 400, "size": 30, "duration": 2, "opacity": 4, "speed": 3 }, "repulse": { "distance": 200, "duration": 0.4 }, "push": { "particles_nb": 2 }, "remove": { "particles_nb": 2 } } }, "retina_detect": true });
+                    let update;
+                    update = function() {
+                        if (window.pJSDom[0].pJS.particles && window.pJSDom[0].pJS.particles.array) {}
+                        requestAnimationFrame(update);
+                    };
+                } else if (modeSelected === "mode-dark") {
+                    $("#particles-js").css("background-color", "black");
+                }
+            } // if
             break;
         case "playlist":
             let relatedArtists = localStorage.getItem(dbPrefix + "relatedArtists");

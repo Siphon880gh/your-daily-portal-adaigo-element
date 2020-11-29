@@ -1,0 +1,10 @@
+.datepicker-controls .select-month input {
+    width: 100px !important;
+}
+
+[type="radio"]:not(:checked),
+[type="radio"]:checked {
+    position: static;
+    opacity: 1;
+    pointer-events: auto;
+}
