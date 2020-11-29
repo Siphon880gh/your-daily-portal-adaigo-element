@@ -49,7 +49,8 @@ let modals = {
     'yourName': null,
     'artist': null,
     'horoscope': null,
-    'message': null
+    'message': null,
+    'modes': null
 }
 
 function initModals() {
@@ -65,6 +66,10 @@ function initModals() {
     // - Artists Modal for setting favorite artist -
     let artistModalEl = document.querySelector('#modal-artist');
     modals.artist = M.Modal.init(artistModalEl);
+
+    // - Modes Modal for setting the mood -
+    let modesModalEl = document.querySelector('#modal-modes');
+    modals.modes = M.Modal.init(modesModalEl);
 
     // - Horoscope Modal for setting birthday -
     let horoscopeModalEl = document.querySelector('#modal-horoscope');

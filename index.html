@@ -27,11 +27,12 @@
         <span class="setting" onclick="modals.yourName.open();"><i class="fas fa-cog fa-fw"></i> Name</span>
         <span class="setting" onclick="modals.horoscope.open();"><i class="fas fa-cog fa-fw"></i> Horoscope</span>
         <span class="setting" onclick="modals.artist.open();"><i class="fas fa-cog fa-fw"></i> Playlist</span>
+        <span class="setting" onclick="modals.modes.open();"><i class="fas fa-cog fa-fw"></i> Mode</span>
     </div>
 
     <main class="container">
 
-        <h1>Daily Dashboard</h1>
+        <h1>Daily Portal</h1>
         <h2 id="front-username"></h2>
 
         <div class="collection" style="display:flex; flex-direction:column; flex-wrap:wrap; justify-content:space-around; border:none; gap:10px;">
@@ -163,6 +164,32 @@
     </div>
 
 
+    <!-- Modal Modes (Different Moods) -->
+    <div id="modal-modes" class="modal bottom-sheet">
+        <div class="modal-header">
+            <span class="modal-close clickable padding-1 right x">X</span>
+        </div>
+
+        <div class="modal-content">
+            <h3><i class="fas fa-cog fa-fw"></i> Want to change the mood?</h3>
+            <p>
+                <form id="modes-input" onsubmit='event.preventDefault();'>
+                    <h3 for="your-name">Different Modes</h3>
+                    <input id="mode-zen" type="radio" name="mode" value="mode-zen" checked="checked">
+                    <label for="mode-zen">Zen</label><br>
+                    <input id="mode-clean" type="radio" name="mode" value="mode-clean">
+                    <label for="mode-clean">Clean</label><br>
+                    <input id="mode-dark" type="radio" name="mode" value="mode-dark">
+                    <label for="mode-dark">Dark</label>
+                </form>
+            </p>
+        </div>
+        <div class="modal-footer">
+            <!-- This is how you change the backgound of the save button bar -->
+            <span class="waves-effect waves-green btn-flat clickable js-btn" onclick="saveMode( document.querySelector('#modes-input') );"><i class="fa fa-save"></i> SAVE</span>
+        </div>
+    </div>
+
     <!-- Modal Messsage -->
     <div id="modal-message" class="modal">
         <div class="modal-content">
@@ -189,7 +216,7 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.js"></script>
 
     <!-- Override Materialize DatePicker CSS -->
-    <link rel="stylesheet" href="assets/css/override-datepicker.css">
+    <link rel="stylesheet" href="assets/css/override-materialize.css">
 
     <!-- JS vendors: Particle JS  -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/particles.js/2.0.0/particles.js"></script>

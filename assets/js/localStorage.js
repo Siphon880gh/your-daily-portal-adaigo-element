@@ -10,6 +10,15 @@ function saveDisplayName(yourName) {
     localStorage.setItem(dbPrefix + "displayName", yourName);
     render("displayName");
     modals.yourName.close();
+};
+
+function saveMode(modeForm) {
+    console.log(modeForm);
+    let modeSelected = modeForm.querySelector('input:checked').value;
+
+    localStorage.setItem(dbPrefix + "modeSelected", modeSelected);
+    render("mode");
+    modals.modes.close();
 }
 
 async function saveHoroscope(birthdate) {
@@ -140,6 +149,24 @@ async function render(section) {
                 div.innerHTML = `${astrologyResponse.current_date}<br/><br/>${astrologyResponse.description} You will be in this mood: ${astrologyResponse.mood}. Your lucky color, number, and time will be: ${astrologyResponse.color}, ${astrologyResponse.lucky_number}, ${astrologyResponse.lucky_time}`;
                 horoscopeEl.append(div);
             }
+            break;
+        case "mode":
+            let modeSelected = localStorage.getItem(dbPrefix + "modeSelected");
+            if (modeSelected) {
+                /**
+                 * Different modes are:
+                 *   mode-zen
+                 *   mode-clean
+                 *   mode-dark
+                 */
+                if (modeSelected === "mode-zen") {
+                    $("#particles-js").css("background-color", 'rgb(83, 25, 218)');
+                } else if (modeSelected === "mode-clean") {
+                    $("#particles-js").css("background-color", "gray");
+                } else if (modeSelected === "mode-dark") {
+                    $("#particles-js").css("background-color", "black");
+                }
+            } // if
             break;
         case "playlist":
             let relatedArtists = localStorage.getItem(dbPrefix + "relatedArtists");
