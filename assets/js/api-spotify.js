@@ -111,7 +111,10 @@ async function spotifyClientCredentialsFlow_relatedArtists(context) {
     let relatedArtists = relatedArtistsJSONResponse.artists;
 
     // Add searched artist object to relatedArtists array so the user can add the searched artists' songs to the playlist too
-    relatedArtists.unshift(artistObject)
+    relatedArtists.unshift(artistObject);
+
+    // Limit artists user can choose to 30 max
+    relatedArtists.splice(30);
 
     console.group("Spotify API");
     console.dir({ relatedArtistsJSONResponse })
