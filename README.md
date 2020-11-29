@@ -19,7 +19,7 @@ The original wireframes for starting off this app if you're [interested](https:/
 
 Screenshots
 ---
-![GIF recording of app](README/demonstration.gif)
+![GIF recording of app](README/Demonstration-Lt10mb.gif)
 
 Future Version
 ---
