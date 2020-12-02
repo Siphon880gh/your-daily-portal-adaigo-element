@@ -49,12 +49,23 @@ body {
     color: black;
 }
 
+#your-name{
+    color: gold;
+    font-size: 24px;
+    font-weight: 500;
+}
+
+#artist{
+    color: gold;
+    font-size: 24px;
+    font-weight: 500;
+}
 /*    Robert CSS
 
 /*  This changes the background color of modal */
 
 .modal-content {
-    background-image: linear-gradient(0deg, rgba(200,88,196,1) 41%, rgba(83,25,218,0.9668242296918768) 100%)
+    background-image: linear-gradient(0deg, rgb(235, 154, 208) 41%, rgba(83,25,218,0.9668242296918768) 100%)
 }
 
 .modal-content h3{
@@ -97,7 +108,7 @@ h3 {
 .modal-footer {
     cursor: pointer;
     /* This is how Stephanie and Robert tried changing footer but instead background of nav */
-    background-image: linear-gradient(to bottom,#C857C3 -5%, #EDBDFA 29%, #D6C183);
+    background-image: linear-gradient(to bottom,#EA9AD0, #D6C183);
 }
     /*  background-color: lightpink; */
 
