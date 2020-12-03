@@ -4,6 +4,7 @@ const app = {
         try {
             app.activateParticleJs();
             initModals();
+            render("mode");
             (function detectIfFirstUse() {
 
             })
