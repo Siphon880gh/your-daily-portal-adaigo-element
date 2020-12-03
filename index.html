@@ -2,7 +2,7 @@
 <html lang="en">
 
 <head>
-    <title>Get related artists</title>
+    <title>Your Daily Portal</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
 
@@ -23,7 +23,7 @@
 
 <body id="particles-js">
     <!-- TODO: Refactor HTML and Javascript -->
-    <div class="settings" style="position:absolute; right:0; top:0; padding:10px;">
+    <div class="settings">
         <span class="setting" onclick="modals.yourName.open();"><i class="fas fa-cog fa-fw"></i> Name</span>
         <span class="setting" onclick="modals.horoscope.open();"><i class="fas fa-cog fa-fw"></i> Horoscope</span>
         <span class="setting" onclick="modals.artist.open();"><i class="fas fa-cog fa-fw"></i> Playlist</span>
@@ -36,15 +36,14 @@
         <h1>Daily Portal</h1>
         <h2 id="front-username"></h2>
 
-        <div class="collection" style="display:flex; flex-direction:column; flex-wrap:wrap; justify-content:space-around; border:none; gap:10px;">
+        <div class="collection">
 
-            <div id="front-horoscope" class="collection-item" style="border:1px solid gray; flex-basis:100%; display:flex; flex-direction:column; justify-content:space-between; flex-wrap:wrap; text-align:center;" data-will-append="img>div"></div>
+            <div id="front-horoscope" class="collection-item" data-will-append="img>div"></div>
 
-            <div id="front-playlist" class="collection-item" style="border:1px solid gray; flex-basis:100%; flex-basis:100%; display:flex; flex-direction:column; justify-content:flex-start; flex-wrap:nowrap;" data-will-append="p div>(.playlist-column*2)"></div>
+            <div id="front-playlist" class="collection-item" data-will-append="p div>(.playlist-column*2)"></div>
 
-            <div class="collection-item" style="border:none; transition: borderColor 200ms; height:100px; display:flex; flex-direction:column; justify-content:space-around;">
-                <div class="clickable" style="display: block; width:25px; height:25px; margin:0 auto; text-align:center; font-size:2rem;" onmouseover="$(this).closest('.collection-item').css('border', '1px solid gray'); setTimeout(()=>{$(this).closest('.collection-item').css('border-color', 'transparent');}, 1000);"
-                    onclick="newSection()">+</div>
+            <div class="collection-item">
+                <div class="new-item clickable" onmouseover="$(this).closest('.collection-item').css('border', '1px solid gray'); setTimeout(()=>{$(this).closest('.collection-item').css('border-color', 'transparent');}, 1000);" onclick="newSection()">+</div>
             </div>
 
         </div>

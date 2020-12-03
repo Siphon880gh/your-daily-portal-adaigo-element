@@ -1,6 +1,6 @@
 /* Color themes */
 
- :root {
+:root {
     --spotify: #f06ade;
     --spotify-feedback: #72f367;
     --spotify-visited: .5;
@@ -42,7 +42,7 @@ h3,
 }
 
 body {
-    color: gold;
+    color: #d2a347;
 }
 
 .modal {
@@ -100,19 +100,13 @@ h3 {
     font-size: 1.78rem !important;
 }
 
-.collection-item {
-    background-color: rgba(255, 255, 255, 0.3) !important;
-}
-
 
 /* Components */
 
 .modal-footer {
     cursor: pointer;
     /* This is how Stephanie and Robert tried changing footer but instead background of nav */
-    <<<<<<< HEAD background-image: linear-gradient(to bottom, #C857C3 -5%, #EDBDFA 29%, #D6C183);
-    =======background-image: linear-gradient(to bottom, #EA9AD0, #D6C183);
-    >>>>>>>2dd3cba... final touches of CS on modals
+    background-image: linear-gradient(to bottom, #EA9AD0, #D6C183);
 }
 
 .modal-footer .btn-flat:hover {
@@ -121,10 +115,12 @@ h3 {
 
 .settings {
     display: flex;
-    /* max-width: 100vw; */
-    /* justify-content: space-between; */
     flex-direction: row;
     flex-wrap: wrap;
+    position: absolute;
+    right: 0;
+    top: 0;
+    padding: 10px;
 }
 
 .settings .setting {
@@ -148,16 +144,48 @@ h3 {
     color: var(--spotify);
 }
 
+.collection {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    border: none;
+    gap: 10px;
+}
+
+.collection-item {
+    background-color: rgba(255, 255, 255, 0.3) !important;
+}
+
+#modal-artist .collection {
+    gap: 0;
+}
+
+.new-item {
+    display: block;
+    width: 25px;
+    height: 25px;
+    margin: 0 auto;
+    text-align: center;
+    font-size: 2rem;
+}
+
 #front-username {
     text-align: left;
 }
 
-#front-username:empty {
+.collection>*:empty {
     display: none !important;
 }
 
-#front-horoscope:empty {
-    display: none !important;
+#front-horoscope {
+    border: 1px solid gray;
+    flex-basis: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    text-align: center;
 }
 
 #front-horoscope img {
@@ -182,6 +210,16 @@ h3 {
     font-weight: 400;
     flex-basis: 100%;
     text-align: center;
+}
+
+#front-playlist {
+    border: 1px solid gray;
+    flex-basis: 100%;
+    flex-basis: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    flex-wrap: nowrap;
 }
 
 #front-playlist>div {
@@ -222,6 +260,7 @@ h3 {
 .results-list li {
     display: inline-block;
     width: 100%;
+    overflow: hidden;
 }
 
 @media (min-width: 480px) {

@@ -161,11 +161,27 @@ async function render(section) {
                  */
                 if (modeSelected === "mode-zen") {
                     $("#particles-js").css("background-color", 'rgb(83, 25, 218)');
+                    $("body").css("color", "#d2a347");
+                    $("#front-horoscope img")
+                        .css("border", "none")
+                        .css("border-radius", "0")
+                        .css("margin-top", "0")
+                        .css("margin-bottom", "0");
+
                     app.activateParticleJs();
                 } else if (modeSelected === "mode-clean") {
                     // Clean mode is gray background with lesser dots and lines in the background
                     $("#particles-js").css("background-color", "gray");
                     particlesJS("particles-js", { "particles": { "number": { "value": 40, "density": { "enable": true, "value_area": 900 } }, "color": { "value": "#ffffff" }, "shape": { "type": "circle", "stroke": { "width": 0, "color": "#000000" }, "polygon": { "nb_sides": 2 }, "image": { "src": "img/github.svg", "width": 100, "height": 100 } }, "opacity": { "value": 0.5, "random": false, "anim": { "enable": false, "speed": 1, "opacity_min": 0.1, "sync": false } }, "size": { "value": 3, "random": true, "anim": { "enable": false, "speed": 40, "size_min": 0.1, "sync": false } }, "line_linked": { "enable": true, "distance": 150, "color": "#ffffff", "opacity": 0.4, "width": 1 }, "move": { "enable": true, "speed": 4, "direction": "none", "random": false, "straight": false, "out_mode": "out", "bounce": false, "attract": { "enable": false, "rotateX": 600, "rotateY": 1200 } } }, "interactivity": { "detect_on": "canvas", "events": { "onhover": { "enable": true, "mode": "repulse" }, "onclick": { "enable": true, "mode": "push" }, "resize": true }, "modes": { "grab": { "distance": 600, "line_linked": { "opacity": 1 } }, "bubble": { "distance": 400, "size": 30, "duration": 2, "opacity": 4, "speed": 3 }, "repulse": { "distance": 200, "duration": 0.4 }, "push": { "particles_nb": 2 }, "remove": { "particles_nb": 2 } } }, "retina_detect": true });
+                    $("body").css("color", "#40456b");
+
+                    // Undecided if the the horoscope looks good with gold borders in clean mode
+                    // $("#front-horoscope img")
+                    //     .css("border", "2px solid #f3e4b9")
+                    //     .css("border-radius", "10px")
+                    //     .css("margin-top", "20px")
+                    //     .css("margin-bottom", "30px");
+
                     let update;
                     update = function() {
                         if (window.pJSDom[0].pJS.particles && window.pJSDom[0].pJS.particles.array) {}
@@ -173,6 +189,12 @@ async function render(section) {
                     };
                 } else if (modeSelected === "mode-dark") {
                     $("#particles-js").css("background-color", "black");
+                    $("body").css("color", "#d2a347");
+                    $("#front-horoscope img")
+                        .css("border", "none")
+                        .css("border-radius", "0")
+                        .css("margin-top", "0")
+                        .css("margin-bottom", "0");
                     app.activateParticleJs();
                 }
             } // if
